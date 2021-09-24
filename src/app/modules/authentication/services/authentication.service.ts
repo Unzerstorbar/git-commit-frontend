@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {map, tap} from "rxjs/operators";
+import {catchError, map, tap} from "rxjs/operators";
 import {BehaviorSubject} from "rxjs";
 import {Token} from "../utils/authentication.types";
 
@@ -34,12 +34,16 @@ export class AuthenticationService {
         .post<any>(`${environment.apiUrl}/auth/login`, { email, password })
         .pipe(
             map(token => {
-              if (token) {
-                localStorage.setItem('token', JSON.stringify(token));
-                this.token.next(token);
-              }
-              return {status: 'success' };
-            })
+                if (token) {
+                    localStorage.setItem('token', JSON.stringify(token));
+                    this.token.next(token);
+                    return {success: true };
+                }
+                return {success: false };
+            }),
+            catchError(() => {
+                return [{success: false}];
+            }),
         );
   }
 
@@ -54,7 +58,13 @@ export class AuthenticationService {
   }
 
   registration(data: {name: string, email: string, password: string, c_password: string}) {
-      return this.http.post(`${environment.apiUrl}/auth/register`, data);
+      return this.http.post(`${environment.apiUrl}/auth/register`, data)
+          .pipe(
+            map(res => ({success: true})),
+            catchError((err) => {
+                return [{success: false}];
+            })
+      );
   }
 
 }
