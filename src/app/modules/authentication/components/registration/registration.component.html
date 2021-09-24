@@ -1,0 +1,91 @@
+<div class="auth-wrapper auth-v1 px-2">
+    <div class="auth-inner py-2">
+        <!-- Register v1 -->
+        <div class="card mb-0">
+            <div class="card-body">
+                <a href="javascript:void(0);" class="brand-logo">
+                    <img src="{{ coreConfig.app.appLogoImage }}" alt="brand-logo" height="28" />
+                    <h2 class="brand-text text-primary ml-1">Добришко</h2>
+                </a>
+
+                <form class="auth-register-form mt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="register-username" class="form-label">Имя пользователя</label>
+                        <input
+                                type="text"
+                                formControlName="username"
+                                class="form-control"
+                                placeholder="Имя"
+                                aria-describedby="register-username"
+                                tabindex="1"
+                                autofocus
+                                [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                        />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Обязательное поле</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email" class="form-label">Email</label>
+                        <input
+                                type="text"
+                                formControlName="email"
+                                class="form-control"
+                                placeholder="john@example.com"
+                                aria-describedby="register-email"
+                                tabindex="2"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                        />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Обязательное поле</div>
+                            <div *ngIf="f.email.errors.email">Не правильный формат email</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password" class="form-label">Пароль</label>
+
+                        <div class="input-group input-group-merge form-password-toggle">
+                            <input
+                                    [type]="passwordTextType ? 'text' : 'password'"
+                                    formControlName="password"
+                                    class="form-control form-control-merge"
+                                    placeholder="············"
+                                    aria-describedby="register-password"
+                                    tabindex="3"
+                                    [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
+                            />
+                            <div class="input-group-append">
+                <span class="input-group-text cursor-pointer"
+                ><i
+                        class="feather font-small-4"
+                        [ngClass]="{
+                      'icon-eye-off': passwordTextType,
+                      'icon-eye': !passwordTextType
+                    }"
+                        (click)="togglePasswordTextType()"
+                ></i
+                ></span>
+                            </div>
+                        </div>
+                        <div
+                                *ngIf="submitted && f.password.errors"
+                                class="invalid-feedback"
+                                [ngClass]="{ 'd-block': submitted && f.password.errors }"
+                        >
+                            <div *ngIf="f.password.errors.required">Обязательное поле</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" tabindex="5" rippleEffect>Зарегистрироваться</button>
+                </form>
+
+                <p class="text-center mt-2">
+                    <span>Уже зарегистрированы? </span>
+                    <a routerLink="/authentication/sign_in">
+                        <span> Войти</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

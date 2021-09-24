@@ -18,12 +18,19 @@ import { coreConfig } from 'app/app-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { AuthenticationModule } from "./modules/authentication/authentication.module";
 
 const appRoutes: Routes = [
   {
     path: 'pages',
     loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
   },
+
+  {
+    path: 'authentication',
+    loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
+
   {
     path: '',
     redirectTo: '/home',
@@ -59,7 +66,8 @@ const appRoutes: Routes = [
 
     // App modules
     LayoutModule,
-    SampleModule
+    SampleModule,
+    AuthenticationModule,
   ],
 
   bootstrap: [AppComponent]
