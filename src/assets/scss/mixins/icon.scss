@@ -1,0 +1,14 @@
+@mixin svg-icon-box($w, $h: $w) {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  width: $w;
+  height: $h;
+  display: block;
+}
+
+@mixin svg-icon($url, $w, $h: $w) {
+  @include svg-icon-box($w, $h);
+  background-image: url($url);
+}

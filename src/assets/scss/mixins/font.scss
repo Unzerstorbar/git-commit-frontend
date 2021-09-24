@@ -1,0 +1,8 @@
+@mixin setFont($size, $lh, $weight: normal, $style: normal, $color: #000000) {
+  font-family: 'Roboto', sans-serif;
+  font-size: $size;
+  line-height: $lh;
+  font-weight: $weight;
+  font-style: $style;
+  color: $color;
+}
