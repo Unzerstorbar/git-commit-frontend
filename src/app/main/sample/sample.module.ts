@@ -12,6 +12,7 @@ import { EventsComponent } from "../events/events.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {EcommerceCheckoutItemComponent} from "../events/ecommerce-checkout-item/ecommerce-checkout-item.component";
 import {CoreTouchspinModule} from "../../../@core/components/core-touchspin/core-touchspin.module";
+import {PlateEventComponent} from "../events/plate-event/plate-event.component";
 
 const routes = [
   {
@@ -36,6 +37,7 @@ const routes = [
       SampleComponent,
       HomeComponent,
       EventsComponent,
+      PlateEventComponent,
       EcommerceCheckoutItemComponent],
     imports: [
         RouterModule.forChild(routes),
