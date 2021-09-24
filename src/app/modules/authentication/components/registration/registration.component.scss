@@ -1,2 +1,6 @@
 @import '@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
 @import '@core/scss/base/pages/page-auth.scss';
+
+.request-err {
+  margin-bottom: 1rem;
+}

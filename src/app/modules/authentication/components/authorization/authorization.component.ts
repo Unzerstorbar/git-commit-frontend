@@ -20,6 +20,7 @@ export class AuthorizationComponent implements OnInit {
   public returnUrl: string;
   public error = '';
   public passwordTextType: boolean;
+  isRequestFail = false;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -76,8 +77,12 @@ export class AuthorizationComponent implements OnInit {
     this.auth.login(
         this.loginForm.get('email').value,
         this.loginForm.get('password').value,
-    ).subscribe(() => {
-      this._router.navigate(['/']);
+    ).subscribe(({success}) => {
+      if (success) {
+        this._router.navigate(['/']);
+      } else {
+        this.isRequestFail = true;
+      }
     });
   }
 
