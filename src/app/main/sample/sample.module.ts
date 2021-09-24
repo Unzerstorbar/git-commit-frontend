@@ -8,8 +8,17 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 
 import { SampleComponent } from './sample.component';
 import { HomeComponent } from './home.component';
+import { EventsComponent } from "../events/events.component";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {EcommerceCheckoutItemComponent} from "../events/ecommerce-checkout-item/ecommerce-checkout-item.component";
+import {CoreTouchspinModule} from "../../../@core/components/core-touchspin/core-touchspin.module";
 
 const routes = [
+  {
+    path: 'events',
+    component: EventsComponent,
+    data: { animation: 'sample' }
+  },
   {
     path: 'sample',
     component: SampleComponent,
@@ -23,8 +32,19 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [SampleComponent, HomeComponent],
-  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule],
+  declarations: [
+      SampleComponent,
+      HomeComponent,
+      EventsComponent,
+      EcommerceCheckoutItemComponent],
+    imports: [
+        RouterModule.forChild(routes),
+        ContentHeaderModule,
+        TranslateModule,
+        CoreCommonModule,
+        NgbModule,
+        CoreTouchspinModule
+    ],
   exports: [SampleComponent, HomeComponent]
 })
 export class SampleModule {}

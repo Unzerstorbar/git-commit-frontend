@@ -1,0 +1,48 @@
+
+<ul ngbNav #nav="ngbNav" class="nav nav-pills">
+    <li ngbNavItem>
+        <a ngbNavLink>Список</a>
+        <ng-template ngbNavContent>
+            <p>
+<!--                <app-ecommerce-checkout-item-->
+<!--                ></app-ecommerce-checkout-item>-->
+            </p>
+        </ng-template>
+    </li>
+    <li ngbNavItem>
+        <a ngbNavLink>Календарем</a>
+        <ng-template ngbNavContent>
+            <p>
+                Pudding candy canes sugar plum cookie chocolate cake powder croissant. Carrot cake tiramisu danish
+                candy cake muffin croissant tart dessert. Tiramisu caramels candy canes chocolate cake sweet roll
+                liquorice icing cupcake.Bear claw chocolate chocolate cake jelly-o pudding lemon drops sweet roll
+                sweet candy. Chocolate sweet chocolate bar candy chocolate bar chupa chups gummi bears lemon
+                drops.
+            </p>
+        </ng-template>
+    </li>
+<!--    <li ngbNavItem [disabled]="true">-->
+<!--        <a href="javascript:void(0)" ngbNavLink>Disabled</a>-->
+<!--        <ng-template ngbNavContent>-->
+<!--            <p>-->
+<!--                Cake croissant lemon drops gummi bears carrot cake biscuit cupcake croissant. Macaroon lemon drops-->
+<!--                muffin jelly sugar plum chocolate cupcake danish icing. Soufflé tootsie roll lemon drops sweet-->
+<!--                roll cake icing cookie halvah cupcake.Chupa chups pie jelly pie tootsie roll dragée cookie-->
+<!--                caramels sugar plum. Jelly oat cake wafer pie cupcake chupa chups jelly-o gingerbread.-->
+<!--            </p>-->
+<!--        </ng-template>-->
+<!--    </li>-->
+    <li ngbNavItem>
+        <a ngbNavLink>Карта</a>
+        <ng-template ngbNavContent>
+            <p>
+                Chocolate croissant cupcake croissant jelly donut. Cheesecake toffee apple pie chocolate bar
+                biscuit tart croissant. Lemon drops danish cookie. Oat cake macaroon icing tart lollipop cookie
+                sweet bear claw. Toffee jelly-o pastry cake dessert chocolate bar jelly beans fruitcake. Dragée
+                sweet fruitcake dragée biscuit halvah wafer gingerbread dessert. Gummies fruitcake brownie gummies
+                tart pudding.
+            </p>
+        </ng-template>
+    </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-1"></div>
