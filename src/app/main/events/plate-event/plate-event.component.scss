@@ -2,6 +2,8 @@
 .event-plate {
   display: flex;
   flex-direction: row;
+  position: relative;
+  justify-content: center;
 }
 
 .title {
@@ -88,4 +90,12 @@
     border-top-right-radius: 0!important;
     border-bottom-right-radius: 0!important;
   }
+}
+
+.status {
+  padding: 3px 11px;
+  margin: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

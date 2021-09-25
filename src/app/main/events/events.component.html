@@ -1,4 +1,4 @@
-
+<div style="display: flex">
 <ul ngbNav #nav="ngbNav" class="nav nav-pills">
     <li ngbNavItem>
         <a ngbNavLink>Список</a>
@@ -44,4 +44,90 @@
         </ng-template>
     </li>
 </ul>
+<button style="height: 38px; margin-left: auto"
+        type="button"
+        (click)="addEvents()"
+        class="btn btn-primary waves-effect waves-float waves-light">
+    <i data-feather='plus'></i> Добавить мероприятие
+</button>
+</div>
+<div class="card event-plate" *ngIf="addEvent">
+<!--<div style="width: 194px; align-self: center; height: 264px">-->
+<!--    -->
+<!--</div>-->
+    <label class="load-image" style="" for="change-picture"><img src="assets/images/pages/camera.svg" alt="">
+    <input
+            class="form-control"
+            type="file"
+            id="change-picture"
+            style="position: absolute; width: 194px; align-self: center; height: 264px; opacity: 0;"
+            accept="image/png, image/jpeg, image/jpg"
+            (change)="uploadImage($event)"
+    />
+    </label>
+
+    <img style="width: 194px; align-self: center; height: 264px" [src]="avatarImage" alt="">
+    <div class="desc-body">
+        <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
+            <div class="data-event font-weight-bolder">
+<!--                22 октября-->
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input
+                                    class="form-control"
+                                    placeholder="yyyy-mm-dd"
+                                    name="Basic Date Picker"
+                                    ngbDatepicker
+                                    #basicDP="ngbDatepicker"
+                            />
+                            <div class="input-group-append">
+                                <button
+                                        class="btn btn-outline-secondary feather icon-calendar"
+                                        (click)="basicDP.toggle()"
+                                        type="button"
+                                        rippleEffect
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="chips text-info">+</div>
+        </div>
+        <h1 class="title">
+            <input type="text" class="form-control form-control-sm"></h1>
+        <div class="description">
+            <textarea style="width: 100%" class="form-control" maxlength="2" rows="1"></textarea>
+        </div>
+        <div style="display: flex; margin-top: 10px; grid-gap: 10px">
+            <button (click)="addEvent=false" class="btn-outline-danger button-action">Отменить</button>
+            <button class="btn-primary button-action">Запустить</button>
+        </div>
+    </div>
+    <div class="right-border">
+        <div class="party-info">
+            <span>Участники</span>
+            <input type="text" class="form-control form-control-sm">
+        </div>
+        <div class="party-info">
+            <span>Волонтеры</span>
+            <input type="text" class="form-control form-control-sm">/
+            <input type="text" class="form-control form-control-sm">
+        </div>
+        <div class="party-info">
+            <span>Собрано средств</span>
+            <input style="width: 72px" type="text" class="form-control form-control-sm">/
+            <input style="width: 72px" type="text" class="form-control form-control-sm">
+        </div>
+        <div style="width: 100%; margin-bottom: auto">
+            <ngb-progressbar showValue="true" type="success" [value]="0"></ngb-progressbar>
+        </div>
+        <button class="avatar bg-light-secondary"><i data-feather='mail'></i>Чат</button>
+        <div style="display: flex; grid-gap: 8px">
+            <button class="btn-outline-secondary button-action">Перейти</button>
+        </div>
+    </div>
+</div>
+
 <div [ngbNavOutlet]="nav" class="mt-1"></div>
