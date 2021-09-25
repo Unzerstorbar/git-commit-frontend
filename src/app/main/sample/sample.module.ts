@@ -23,22 +23,26 @@ import {EventsListComponent} from "../events-list/events-list.component";
 import {EventEditorComponent} from "../event-editor/event-editor.component";
 import {AboutComponent} from "../about/about.component";
 import {FaqComponent} from "../faq/faq.component";
+import {AuthGuard} from "../../common/auth.guard";
 
 const routes: Routes = [
     {
         path: 'about-us',
         component: AboutComponent,
-        data: { animation: 'sample' }
+        data: { animation: 'sample' },
+        canActivate: [AuthGuard]
     },
     {
         path: 'faq',
         component: FaqComponent,
-        data: { animation: 'sample' }
+        data: { animation: 'sample' },
+        canActivate: [AuthGuard]
     },
   {
     path: 'events',
     component: EventsComponent,
-    children: [
+      canActivate: [AuthGuard],
+      children: [
       {
           path: 'event/:id',
           redirectTo: '/event/:id',
@@ -48,40 +52,48 @@ const routes: Routes = [
   {
     path: 'event/:id',
     component: EventPageComponent,
-    data: { animation: 'sample' }
+    data: { animation: 'sample' },
+      canActivate: [AuthGuard]
   },
     {
         path: 'event/edit/;id',
         component: EventEditorComponent,
-        data: { animation: 'sample' }
+        data: { animation: 'sample' },
+        canActivate: [AuthGuard]
     },
     {
         path: 'event/list',
         component: EventsListComponent,
-        data: { animation: 'sample' }
+        data: { animation: 'sample' },
+        canActivate: [AuthGuard]
     },
   {
     path: 'sample',
     component: SampleComponent,
-    data: { animation: 'sample' }
+    data: { animation: 'sample' },
+      canActivate: [AuthGuard]
   },
   {
     path: 'home',
     component: HomeComponent,
-    data: { animation: 'home' }
+    data: { animation: 'home' },
+    canActivate: [AuthGuard]
   },
     {
         path: 'profile/:id',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'profile/list',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'profile/edit/:id',
         pathMatch: 'full',
-        component: ProfileEditorComponent
+        component: ProfileEditorComponent,
+        canActivate: [AuthGuard]
     }
 ];
 
