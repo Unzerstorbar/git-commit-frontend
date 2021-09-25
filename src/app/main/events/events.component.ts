@@ -18,7 +18,6 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.getListEvent().subscribe(list => {
       this.eventList = list;
-      debugger
       this._changeDetectorRef.markForCheck()
     })
     console.log(this.eventList)
