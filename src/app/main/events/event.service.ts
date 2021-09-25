@@ -3,7 +3,7 @@ import {environment} from "../../../environments/environment";
 import {map, tap} from "rxjs/operators";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Token} from "../../modules/authentication/utils/authentication.types";
+import {UserData} from "../../modules/authentication/utils/authentication.types";
 import moment from "moment";
 
 @Injectable({
@@ -11,12 +11,12 @@ import moment from "moment";
 })
 export class EventService {
 
-    private token: BehaviorSubject<Token>;
+    private token: BehaviorSubject<UserData>;
 
     header;
     url = environment.apiUrl + '/'
     constructor(private http: HttpClient) {
-        this.token = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('token')));
+        this.token = new BehaviorSubject<UserData>(JSON.parse(localStorage.getItem('token')));
         this.header = new HttpHeaders().set("Authorization", 'Bearer ' + this.token.value.access_token);
     }
 
