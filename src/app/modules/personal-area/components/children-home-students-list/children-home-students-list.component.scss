@@ -1,5 +1,7 @@
 @import "src/assets/scss/mixins/import";
 @import '@core/scss/base/pages/app-ecommerce.scss';
+@import '@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
+@import '@core/scss/base/pages/page-auth.scss';
 
 .flex_column {
   display: flex;
@@ -64,6 +66,7 @@
         border: none;
         background: transparent;
         color: rgb(var(--color-btn-blue-rgb));
+        box-shadow: unset;
       }
     }
   }
@@ -126,4 +129,19 @@
 .student_row__base{
   text-align: center;
   width: 30rem;
+}
+
+.change_password__row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+
+  > div {
+    margin: 5px;
+  }
+
+  > div:first-child {
+    font-weight: 700;
+  }
 }

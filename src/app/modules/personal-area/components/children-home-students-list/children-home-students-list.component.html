@@ -32,7 +32,10 @@
             </div>
                 <div class="student_row__email">{{student.email}}</div>
             <div class="flex_row service_btn_row">
-                <button>Сменить пароль</button>
+                <button (click)="modalOpenChangePassword(changePasswordRef, student)"
+                        rippleEffect>
+                    Сменить пароль
+                </button>
             </div>
         </div>
     </div>
@@ -89,5 +92,81 @@
             <button class="btn btn-primary btn-block"
             (click)="saveChildren()">+</button>
         </div>
+    </div>
+</ng-template>
+
+<ng-template #changePasswordRef let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel160">Сменить пароль пользователю</h5>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="change_password__row">
+            <div>ФИО:</div><div>{{selectedStudent.name}}</div>
+        </div>
+        <div class="change_password__row">
+            <div>Дата рождения:</div><div>{{selectedStudent.birthday}}</div>
+        </div>
+        <div *ngIf="selectedStudent.email"
+             class="change_password__row">
+            <div>Email:</div><div>{{selectedStudent.email}}</div>
+        </div>
+
+        <div [formGroup]="changePasswordForm">
+            <div class="form-group">
+                <label>Пароль</label>
+                <div class="input-group input-group-merge form-password-toggle">
+                    <input formControlName="password"
+                           [type]="changePasswordFormOptions.isPasswordType ? 'text' : 'password'"
+                           class="form-control form-control-merge"
+                            placeholder="·········"
+                    />
+
+                    <div class="input-group-append">
+                        <span class="input-group-text cursor-pointer">
+                            <i class="feather font-small-4"
+                                [ngClass]="{
+                                    'icon-eye-off': changePasswordFormOptions.isPasswordType,
+                                    'icon-eye': !changePasswordFormOptions.isPasswordType
+                                }"
+                                (click)="changePasswordFormOptions.isPasswordType = !changePasswordFormOptions.isPasswordType"
+                            >
+
+                            </i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <div class="input-group input-group-merge form-password-toggle">
+                    <input formControlName="c_password"
+                           [type]="changePasswordFormOptions.isCPasswordType ? 'text' : 'password'"
+                           class="form-control form-control-merge"
+                           placeholder="·········"
+                    />
+
+                    <div class="input-group-append">
+                        <span class="input-group-text cursor-pointer">
+                            <i class="feather font-small-4"
+                               [ngClass]="{
+                                    'icon-eye-off': changePasswordFormOptions.isCPasswordType,
+                                    'icon-eye': !changePasswordFormOptions.isCPasswordType
+                                }"
+                               (click)="changePasswordFormOptions.isCPasswordType = !changePasswordFormOptions.isCPasswordType"
+                            >
+
+                            </i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                class="btn btn-primary"
+                (click)="changePassword(modal)" rippleEffect>
+            Сменить пароль
+        </button>
     </div>
 </ng-template>

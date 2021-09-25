@@ -6,6 +6,7 @@ import {AuthenticationService} from "../../authentication/services/authenticatio
 import {BehaviorSubject, Observable} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 import {RegistryRowModel} from "../common/registry-row.model";
+import {environment} from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,14 @@ export class HomeChildrenService extends CrudService<HomeChildrenModel>{
         .pipe(
             map(status => ({success: true})),
             catchError(() => [{success: false}])
+        );
+  }
+
+  changePasswordForPupil(id: number, data: {password: string, c_password: string}){
+    const headers = this.auth.getAuthorizationHeaders();
+    return this.http.post(`${environment.apiUrl}/pupil/${id}/password/change`, data, {headers})
+        .pipe(
+            map(() => ({success: true}))
         );
   }
 }

@@ -3,6 +3,7 @@ import {HomeChildrenService} from "../../services/home-children.service";
 import {ActivatedRoute} from "@angular/router";
 import {RegistryRowModel} from "../../common/registry-row.model";
 import {FormControl, FormGroup} from "@angular/forms";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-children-home-students-list',
@@ -12,12 +13,20 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class ChildrenHomeStudentsListComponent implements OnInit {
 
   constructor(
+      private modalService: NgbModal,
       private route: ActivatedRoute,
       private homeChildrenService: HomeChildrenService
   ) { }
 
   isActiveCreateForm = false;
   studentsList: RegistryRowModel[] = [];
+
+  selectedStudent: RegistryRowModel = null;
+  changePasswordForm: FormGroup;
+  changePasswordFormOptions = {
+    isPasswordType: false,
+    isCPasswordType: false,
+  };
 
   group:FormGroup;
 
@@ -67,6 +76,29 @@ export class ChildrenHomeStudentsListComponent implements OnInit {
       this.clear();
       this.loadData(this.homeChildrenService.currentId);
     });
+  }
+
+  modalOpenChangePassword(modalSuccess, student) {
+    this.selectedStudent = student;
+    this.initChangePasswordGroup();
+    this.modalService.open(modalSuccess, {
+      windowClass: 'modal modal-primary',
+      injector: student
+    });
+  }
+
+  private initChangePasswordGroup() {
+    this.changePasswordForm = new FormGroup({
+      password: new FormControl(''),
+      c_password: new FormControl(''),
+    })
+  }
+
+  changePassword(modal){
+    modal.close('Accept click');
+    const data = this.changePasswordForm.value;
+    this.homeChildrenService.changePasswordForPupil(this.selectedStudent.id, data)
+        .subscribe();
   }
 
 }
