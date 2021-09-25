@@ -19,12 +19,20 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { AuthenticationModule } from "./modules/authentication/authentication.module";
-import { PlateEventComponent } from './main/events/plate-event/plate-event.component';
+import {AuthGuard} from "./common/auth.guard";
+import { ProfileComponent } from './main/profile/profile.component';
+import { ProfileListComponent } from './main/profile-list/profile-list.component';
+import { ProfileEditorComponent } from './main/profile-editor/profile-editor.component';
+import { EventsListComponent } from './main/events-list/events-list.component';
+import { EventEditorComponent } from './main/event-editor/event-editor.component';
+import { AboutComponent } from './main/about/about.component';
+import { FaqComponent } from './main/faq/faq.component';
 
 const appRoutes: Routes = [
   {
     path: 'pages',
-    loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
+    loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule),
+    canActivate: [AuthGuard]
   },
 
   {
@@ -32,23 +40,24 @@ const appRoutes: Routes = [
     loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./modules/personal-area/profile.module').then(m => m.ProfileModule)
+    path: 'orphanage',
+    loadChildren: () => import('./modules/personal-area/profile.module').then(m => m.ProfileModule),
+    canActivate: [AuthGuard]
   },
 
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
+    redirectTo: '/pages/miscellaneous/error'
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProfileComponent, ProfileListComponent, ProfileEditorComponent, EventsListComponent, EventEditorComponent, AboutComponent, FaqComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

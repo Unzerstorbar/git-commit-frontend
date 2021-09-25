@@ -48,10 +48,11 @@ export class AuthenticationService {
   }
 
   logout() {
-    return this.http.get(`${environment.apiUrl}/auth/logout`)
+      const headers = this.getAuthorizationHeaders();
+    return this.http.get(`${environment.apiUrl}/auth/logout`, {headers})
         .pipe(
           tap(() => {
-            localStorage.removeItem('token');
+            localStorage.removeItem('userData');
             this.userData.next(null)
           })
         );

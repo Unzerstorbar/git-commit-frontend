@@ -6,22 +6,26 @@ import { ContactPersonComponent } from './components/contact-person/contact-pers
 import { ChildrenHomeCardComponent } from './components/children-home-card/children-home-card.component';
 import { ChildrenHomeStudentsListComponent } from './components/children-home-students-list/children-home-students-list.component';
 import {CoreCommonModule} from "../../../@core/common.module";
+import { OrphanageEditorComponent } from './components/orphanage-editor/orphanage-editor.component';
+import { OrphanageListComponent } from './components/orphanage-list/orphanage-list.component';
 
 
 const routes: Routes = [
   {
-    path: 'lk',
-    component: ChildrenHomeProfileComponent,
-    children: [
-      {
-        path: 'card/:id',
-        component: ChildrenHomeCardComponent,
-      },
-      {
-        path: 'list/:id',
-        component: ChildrenHomeStudentsListComponent
-      },
-    ]
+    path: ':id',
+    component: ChildrenHomeCardComponent,
+  },
+  {
+    path: 'edit/:id',
+    component: OrphanageEditorComponent
+  },
+  {
+    path: 'list',
+    component: OrphanageListComponent
+  },
+  {
+    path: 'pupil/:id',
+    component: ChildrenHomeStudentsListComponent
   },
 ];
 
@@ -30,7 +34,9 @@ const routes: Routes = [
     ChildrenHomeProfileComponent,
     ContactPersonComponent,
     ChildrenHomeCardComponent,
-    ChildrenHomeStudentsListComponent
+    ChildrenHomeStudentsListComponent,
+    OrphanageEditorComponent,
+    OrphanageListComponent
   ],
     imports: [
         CommonModule,

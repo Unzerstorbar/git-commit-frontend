@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { CoreCommonModule } from '@core/common.module';
@@ -17,8 +17,24 @@ import {MomentPipe} from "../../../@core/pipes/moment.pipe";
 import {EventPageComponent} from "../event-page/event-page.component";
 import {CardSnippetModule} from "../../../@core/components/card-snippet/card-snippet.module";
 import {GoogleMapsModule} from "@angular/google-maps";
+import {ProfileComponent} from "../profile/profile.component";
+import {ProfileEditorComponent} from "../profile-editor/profile-editor.component";
+import {EventsListComponent} from "../events-list/events-list.component";
+import {EventEditorComponent} from "../event-editor/event-editor.component";
+import {AboutComponent} from "../about/about.component";
+import {FaqComponent} from "../faq/faq.component";
 
-const routes = [
+const routes: Routes = [
+    {
+        path: 'about-us',
+        component: AboutComponent,
+        data: { animation: 'sample' }
+    },
+    {
+        path: 'faq',
+        component: FaqComponent,
+        data: { animation: 'sample' }
+    },
   {
     path: 'events',
     component: EventsComponent,
@@ -34,6 +50,16 @@ const routes = [
     component: EventPageComponent,
     data: { animation: 'sample' }
   },
+    {
+        path: 'event/edit/;id',
+        component: EventEditorComponent,
+        data: { animation: 'sample' }
+    },
+    {
+        path: 'event/list',
+        component: EventsListComponent,
+        data: { animation: 'sample' }
+    },
   {
     path: 'sample',
     component: SampleComponent,
@@ -43,7 +69,20 @@ const routes = [
     path: 'home',
     component: HomeComponent,
     data: { animation: 'home' }
-  }
+  },
+    {
+        path: 'profile/:id',
+        component: ProfileComponent
+    },
+    {
+        path: 'profile/list',
+        component: ProfileComponent
+    },
+    {
+        path: 'profile/edit/:id',
+        pathMatch: 'full',
+        component: ProfileEditorComponent
+    }
 ];
 
 @NgModule({
