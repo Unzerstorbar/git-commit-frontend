@@ -1,9 +1,10 @@
 @import "src/assets/scss/mixins/import";
+@import '@core/scss/base/pages/app-ecommerce.scss';
 
 ul {
   display: flex;
   align-items: center;
-  background: rgb(var(--color-system-block-rgb));
+  flex-direction: row;
   @include setFont(14px, 17px, 700, normal, rgb(var(--color-text-base-rgb)));
   list-style-type: none;
   height: 38px;

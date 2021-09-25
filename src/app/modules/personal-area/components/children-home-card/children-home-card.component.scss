@@ -1,4 +1,5 @@
 @import "src/assets/scss/mixins/import";
+@import '@core/scss/base/pages/app-ecommerce.scss';
 
 .flex_column {
   display: flex;
@@ -40,12 +41,10 @@
   }
 
   &__img_block {
-    //padding: 15px;
     max-width: 350px;
   }
 
   &__info_block{
-    background: rgb(var(--color-system-block-rgb));
     margin-top: 20px;
     border-radius: 6px;
   }

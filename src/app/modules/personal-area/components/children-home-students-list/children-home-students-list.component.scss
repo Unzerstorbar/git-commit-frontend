@@ -1,4 +1,5 @@
 @import "src/assets/scss/mixins/import";
+@import '@core/scss/base/pages/app-ecommerce.scss';
 
 .flex_column {
   display: flex;
@@ -15,7 +16,6 @@
   width: 72%;
   height: 40px;
   border-radius: 6px;
-  background: rgb(var(--color-system-block-rgb));
   position: relative;
 
   > input {
@@ -25,9 +25,11 @@
     padding: 5px;
     padding-left: 10px;
     outline: none;
+    background: transparent;
   }
 
   > .search_icon {
+    margin-left: 10px;
     @include svg-icon("/assets/images/icons/search.svg", 20px, 100%);
   }
 }
@@ -36,7 +38,6 @@
   margin-bottom: 15px;
 
   > button {
-    background: rgb(var(--color-btn-blue-rgb));
     @include setFont(12px, 14px, 500, normal, rgb(var(--color-text-white-rgb)));
     padding: 8px 19px;
     border: none;
@@ -48,13 +49,11 @@
   width: 90%;
   > .student_row {
     margin: 5px 0;
-    //justify-content: space-between;
 
     > :first-child{
       justify-content: space-between;
       align-items: center;
       width: 80%;
-      background: rgb(var(--color-system-block-rgb));
       padding: 8px 30px;
     }
 

@@ -12,7 +12,7 @@ export class ChildrenHomeCardComponent implements OnInit {
 
   @Input() id: number;
 
-  homeChildren: HomeChildrenModel = null;
+  homeChildren: HomeChildrenModel = {} as HomeChildrenModel;
 
   constructor(
       private homeChildrenService: HomeChildrenService,
