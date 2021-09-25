@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {EventService} from "./event.service";
 
 @Component({
   selector: 'app-events',
@@ -7,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  addEvent = true;
+  addEvent = false;
   avatarImage = '';
-  constructor() { }
+  eventList: [] = null;
+  constructor(public eventService: EventService,
+  private _changeDetectorRef: ChangeDetectorRef,) { }
 
   ngOnInit(): void {
+    this.eventService.getListEvent().subscribe(list => {
+      this.eventList = list;
+      debugger
+      this._changeDetectorRef.markForCheck()
+    })
+    console.log(this.eventList)
   }
 
   uploadImage(event: any) {

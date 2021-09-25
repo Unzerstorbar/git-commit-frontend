@@ -1,14 +1,21 @@
-<div class="card event-plate">
-    <div class="status bg-gradient-warning">Перенесено</div>
-    <img style="width: 194px; height: 264px" src="assets/images/pages/content-img-1.jpg" alt="">
+<div class="card event-plate" *ngIf="eventItem">
+    <ng-container [ngSwitch]="eventItem.event_status.id">
+        <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
+        <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
+        <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="name3"></ng-container>
+        <ng-container *ngSwitchCase="4" [ngTemplateOutlet]="name4"></ng-container>
+        <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
+        <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
+    </ng-container>
+    <img style="width: 194px; height: 264px" [src]="eventItem.image.name" [alt]="eventItem.image.name">
     <div class="desc-body">
         <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
-            <div class="data-event font-weight-bolder">22 октября</div>
-            <div class="chips text-info">Спорт</div>
+            <div class="data-event font-weight-bolder"><!--22 октября-->{{eventItem.date}}</div>
+            <div *ngFor="let topic of eventItem.topic" class="chips text-info">{{topic.name}}</div>
         </div>
-        <h1 class="title">Чемпионат мира по футболу</h1>
+        <h1 class="title">{{eventItem.name}}</h1>
         <div class="description">
-            <p>Краткое описание:В своём стремлении повысить качество жизни, они забывают, что базовый вектор развития однозначно определяет каждого участника как способного принимать собственные....</p>
+            <p>{{eventItem.description}}</p>
         </div>
     </div>
     <div class="right-border">
@@ -34,3 +41,12 @@
         </div>
     </div>
 </div>
+
+
+
+<ng-template #name1><div class="status bg-info bg-gradient-darken2">{{eventItem.event_status.name}}</div></ng-template>
+<ng-template #name2><div class="status bg-gradient-success">{{eventItem.event_status.name}}</div></ng-template>
+<ng-template #name3><div class="status bg-danger bg-gradient-lighten-2">{{eventItem.event_status.name}}</div></ng-template>
+<ng-template #name4><div class="status bg-danger bg-gradient-lighten-2">{{eventItem.event_status.name}}</div></ng-template>
+<ng-template #name5><div class="status bg-gradient-warning">{{eventItem.event_status.name}}</div></ng-template>
+<ng-template #name6><div class="status bg-gradient-warning">{{eventItem.event_status.name}}</div></ng-template>
