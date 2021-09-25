@@ -1,0 +1,14 @@
+@import "src/assets/scss/mixins/import";
+
+.contact {
+  &__name {
+    @include setFont(12px, 15px, 600, normal, rgb(var(--color-text-base-rgb)));
+    margin-bottom: 12px;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    @include setFont(12px, 15px, 400, normal, rgb(var(--color-text-sub-rgb)));
+  }
+}

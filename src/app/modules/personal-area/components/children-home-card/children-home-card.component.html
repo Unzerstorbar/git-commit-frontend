@@ -1,0 +1,99 @@
+<div class="flex_column profile" *ngIf="!!homeChildren">
+    <div class="flex_column">
+        <div class="profile__title">{{homeChildren.name}}</div>
+    </div>
+
+    <div class="flex_row profile__info_block">
+        <div class="flex_column profile__img_block">
+            <img src="favicon.ico" class="maim_img"/>
+            <div class="sub_img_row">
+                <img src="favicon.ico" />
+                <img src="favicon.ico" />
+                <img src="favicon.ico" />
+                <img src="favicon.ico" />
+                <img src="favicon.ico" />
+            </div>
+        </div>
+        <div class="flex_column profile__content">
+            <div class="profile__content__base_info flex_row">
+                <div>
+                    <div class="flex_row">
+                        <div class="flex_column block_info mrgn_40">
+                            <div class="block_info__title">Адрес</div>
+                            <div class="block_info__content">{{homeChildren.address}}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex_column block_info mrgn_40">
+                        <div class="block_info__title">Реквизиты для пожертований</div>
+                        <div class="block_info__content">Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44</div>
+                    </div>
+
+                    <div class="flex_row contact_block">
+                        <div class="flex_column block_info mrgn_40">
+                            <app-contact-person
+                                    name="Контакты"
+                                    phone="8 (897) 887 77 77"
+                                    email="8 (897) 887 77 77">
+
+                            </app-contact-person>
+                        </div>
+
+                        <div class="flex_column block_info">
+                            <div class="block_info__title">Контактное лица</div>
+
+                            <app-contact-person
+                                    name="Елена Васильевна  Лебедева"
+                                    phone="8 (897) 887 77 77"
+                                    email="8 (897) 887 77 77">
+
+                            </app-contact-person>
+
+                            <app-contact-person
+                                    name="Елена Васильевна  Лебедева"
+                                    phone="8 (897) 887 77 77"
+                                    email="8 (897) 887 77 77">
+
+                            </app-contact-person>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="donate_btn">Пожертовать</button>
+                </div>
+            </div>
+
+            <div class="profile__requisites flex_row">
+                <div class="block_info">
+                    <div class="requisites_block_title">Реквизиты</div>
+                    <div>
+                        УФК по Калужской области (ИАТЭ НИЯУ МИФИ л/сч 30376У90590)
+
+                        р/сч 03214643000000013700
+
+                        Банк: Отделение Калуга Банка России//УФК по Калужской области г. Калуга
+
+                        БИК 012908002
+
+                        КОРР.СЧЕТ 40102810045370000030
+
+                        КБК 00000000000000000130
+                    </div>
+                </div>
+                <div class="block_info">
+                    <div class="requisites_block_title">Материально техническое оснащение</div>
+                    <div>
+                        <div>Компьютерный клас</div>
+                        <div>Компьютерный клас</div>
+                        <div>Компьютерный клас</div>
+                        <div>Компьютерный клас</div>
+                        <div>Компьютерный клас</div>
+                        <div>Компьютерный клас</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

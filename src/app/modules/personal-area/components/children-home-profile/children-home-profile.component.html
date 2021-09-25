@@ -1,0 +1,22 @@
+<div>
+    <ul>
+        <li>
+            <a routerLinkActive="active"
+               [routerLink]="['card/' + id]">
+                Карточка
+            </a>
+        </li>
+        <li class="devider">|</li>
+        <li>
+            <a routerLinkActive="active"
+               [routerLink]="['list/' + id]">
+                Воспитаники
+            </a>
+        </li>
+    </ul>
+
+    <div class="content_wrapper" style="width: 100%">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

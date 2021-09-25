@@ -1,2 +1,17 @@
 @import '@core/scss/base/core/menu/menu-types/vertical-menu.scss';
 @import '@core/scss/base/core/menu/menu-types/vertical-overlay-menu.scss';
+
+.header-navbar.floating-nav{
+  position: absolute;
+  width: 300px !important;
+  left: unset !important;
+  right: 28px !important;
+}
+
+.app-content{
+  padding-top: 15px !important;
+}
+
+.header-navbar-shadow {
+  display: none !important;
+}

@@ -1,0 +1,34 @@
+<div>
+    <div class="search flex_row">
+        <div class="search_icon"></div>
+        <input type="text" />
+    </div>
+
+    <div class="service_panel flex_row">
+        <button class="btn btn-primary ">+  Добавить воспитанника</button>
+    </div>
+
+    <div class="registry flex_column">
+        <div class="student_row flex_row" *ngFor="let student of studentsList; let i = index">
+            <div class="flex_row">
+                <div class="student_row__logo">
+                    <img src="favicon.ico" />
+                </div>
+                <div class="flex_column student_row__info">
+                    <div>{{student.name}}</div>
+                    <div>
+                        <span class="birthday">{{student.birthday}}</span>
+                        <span class="age">{{student.age}}</span>
+                    </div>
+                </div>
+                <div class="student_row__login">{{student.login}}</div>
+                <div class="student_row__email">{{student.email}}</div>
+            </div>
+            <div class="flex_row service_btn_row">
+                <button>Сменить пароль</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="paginator"></div>
+</div>
