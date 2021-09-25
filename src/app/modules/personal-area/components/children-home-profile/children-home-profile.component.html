@@ -2,14 +2,14 @@
     <ul class="card ecommerce-card">
         <li>
             <a routerLinkActive="active"
-               [routerLink]="['card/' + id]">
+               [routerLink]="['card/' + homeChildrenService.currentId]">
                 Карточка
             </a>
         </li>
         <li class="devider">|</li>
         <li>
             <a routerLinkActive="active"
-               [routerLink]="['list/' + id]">
+               [routerLink]="['list/' + homeChildrenService.currentId]">
                 Воспитаники
             </a>
         </li>

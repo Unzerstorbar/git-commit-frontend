@@ -9,14 +9,11 @@ import {HomeChildrenService} from "../../services/home-children.service";
 })
 export class ChildrenHomeProfileComponent implements OnInit {
 
-  id: number = null;
-
   constructor(
-      private route: ActivatedRoute
-      ) { }
+      public homeChildrenService: HomeChildrenService
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.id = +params['id']);
   }
 
 

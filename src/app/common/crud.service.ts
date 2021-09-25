@@ -9,9 +9,9 @@ export abstract class CrudService<T> {
     baseUrl: string;
 
     protected constructor(
-        private http: HttpClient,
-        private auth: AuthenticationService,
-        private baseUrlPart: string
+        protected http: HttpClient,
+        protected auth: AuthenticationService,
+        protected baseUrlPart: string
     ) {
         this.baseUrl = `${environment.apiUrl}/${baseUrlPart}`
     }
