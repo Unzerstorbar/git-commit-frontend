@@ -1,23 +1,171 @@
-<div class="card">
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <div class="card">
+            <div style="display: flex; flex-wrap: wrap">
+                <div class="item-img">
+                    <a href="" style="position: relative; flex-wrap: wrap">
+                        <ng-container [ngSwitch]="data.event_status.id">
+                            <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
+                            <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
+                            <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="name3"></ng-container>
+                            <ng-container *ngSwitchCase="4" [ngTemplateOutlet]="name4"></ng-container>
+                            <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
+                            <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
+                        </ng-container>
+                        <img style="width: 194px; height: 264px" [src]="data.image.name" [alt]="data.image.name">
+                    </a>
+                </div>
+                <div class="card-body desc-body">
+                    <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
+                        <div class="data-event font-weight-bolder"><!--22 октября-->{{data.date}}</div>
+                        <div *ngFor="let topic of data.topic" class="chips text-info">{{topic.name}}</div>
+                    </div>
+                    <h1 class="title">{{data.name}}</h1>
+                    <div class="description">
+                        <p>{{data.description}}</p>
+                    </div>
+                </div>
 
-    <google-map style="height: 234px; width: 350px"></google-map>
-    <div class="col-md-6 col-sm-12">
-        <section id="basic-carousel">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <h4 class="card-title">Галерея</h4>
-                    <div class="card-body">
-                        <ngb-carousel *ngIf="carouselImages">
-                            <ng-template *ngFor="let image of carouselImages" ngbSlide>
-                                <div class="carousel-img-wrapper">
-                                    <img [src]="image" class="img-fluid" alt="Random first slide" />
+                <div class="item-options right-border">
+                    <button class="btn-danger button-action">Отменить участие</button>
+                </div>
+            </div>
+            <div style="display: flex; margin: 20px; flex-wrap: wrap; grid-gap: 50px;">
+                <div>
+                    <div style="margin: 20px 0">Организаторы</div>
+                    <div style="display: flex; align-items: center">
+                        <span style="margin-right: 10px; font-weight: 500">{{data.organizers}}</span> <div class="avatar-group">
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-5.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
                                 </div>
-                                <div class="carousel-caption"></div>
-                            </ng-template>
-                        </ngb-carousel>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-7.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-10.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-8.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-20.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                            </div> <span class="text-primary" style="margin: 5px">еще +{{data.organizers - 5}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div style="margin: 20px 0">Участники</div>
+                    <div style="display: flex; align-items: center">
+                        <span style="margin-right: 10px; font-weight: 500">{{data.participants}}</span>
+                        <div class="avatar-group">
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-5.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-7.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-10.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-8.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                                <div class="avatar pull-up">
+                                    <img
+                                            class="media-object"
+                                            src="assets/images/portrait/small/avatar-s-20.jpg"
+                                            alt="Avatar"
+                                            height="32"
+                                            width="32"
+                                    />
+                                </div>
+                            </div> <span class="text-primary" style="margin: 5px">еще +{{data.participants - 5}}</span>
                     </div>
                 </div>
             </div>
-        </section>
+            <div style="height: 234px; width: 350px; margin: 20px">
+                <div style="padding-bottom: 8px">Место проведения</div>
+                <google-map height="234px" width="350px" style=" "></google-map>
+            </div>
+            <div style="padding: 20px" class="col-md-10 col-sm-12">
+                <section id="basic-carousel">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-12">
+                            <h4 class="card-title">Галерея</h4>
+                            <div style="padding: 0" class="card-body">
+                                <ngb-carousel *ngIf="carouselImages">
+                                    <ng-template *ngFor="let image of carouselImages" ngbSlide>
+                                        <div class="carousel-img-wrapper">
+                                            <img [src]="image" class="img-fluid" alt="Random first slide" />
+                                        </div>
+                                        <div class="carousel-caption"></div>
+                                    </ng-template>
+                                </ngb-carousel>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
 </div>
+<ng-template #name1><div class="status bg-info bg-gradient-darken2">{{data.event_status.name}}</div></ng-template>
+<ng-template #name2><div class="status bg-gradient-success">{{data.event_status.name}}</div></ng-template>
+<ng-template #name3><div class="status bg-danger bg-gradient-lighten-2">{{data.event_status.name}}</div></ng-template>
+<ng-template #name4><div class="status bg-danger bg-gradient-lighten-2">{{data.event_status.name}}</div></ng-template>
+<ng-template #name5><div class="status bg-gradient-warning">{{data.event_status.name}}</div></ng-template>
+<ng-template #name6><div class="status bg-gradient-warning">{{data.event_status.name}}</div></ng-template>

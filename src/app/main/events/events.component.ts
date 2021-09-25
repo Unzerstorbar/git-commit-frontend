@@ -9,6 +9,7 @@ import {EventService} from "./event.service";
 export class EventsComponent implements OnInit {
 
   addEvent = false;
+  contentHeader;
   avatarImage = '';
   eventList: [] = null;
   constructor(public eventService: EventService,
@@ -17,10 +18,27 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.getListEvent().subscribe(list => {
       this.eventList = list;
-      debugger
       this._changeDetectorRef.markForCheck()
     })
     console.log(this.eventList)
+    this.contentHeader = {
+      headerTitle: 'Мероприятия',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Домашняя',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Мероприятия',
+            isLink: false
+          }
+        ]
+      }
+    }
   }
 
   uploadImage(event: any) {
