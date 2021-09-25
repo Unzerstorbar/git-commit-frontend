@@ -11,7 +11,8 @@ export abstract class CrudService<T> {
     protected constructor(
         protected http: HttpClient,
         protected auth: AuthenticationService,
-        protected baseUrlPart: string
+        protected baseUrlPart: string,
+        protected map?: any,
     ) {
         this.baseUrl = `${environment.apiUrl}/${baseUrlPart}`
     }
@@ -20,7 +21,7 @@ export abstract class CrudService<T> {
         const headers = this.auth.getAuthorizationHeaders();
         return this.http.get(`${this.baseUrl}/${id}`, {headers})
             .pipe(
-                map(data => data as T)
+                this.map ? this.map : map(data => data as T)
             );
     };
 
@@ -31,9 +32,10 @@ export abstract class CrudService<T> {
                 map(status => ({success: true}))
             );
     };
-    update(entity: T): Observable<{success: boolean}> {
+
+    update(entity: T, id: number): Observable<{success: boolean}> {
         const headers = this.auth.getAuthorizationHeaders();
-        return this.http.patch(`${this.baseUrl}`, JSON.stringify(entity), {headers})
+        return this.http.patch(`${this.baseUrl}/${id}`, JSON.stringify(entity), {headers})
             .pipe(
                 map(status => ({success: true}))
             );

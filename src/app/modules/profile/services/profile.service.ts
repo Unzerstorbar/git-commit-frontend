@@ -1,49 +1,20 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-
-import { BehaviorSubject, Observable } from 'rxjs';
+import {Injectable, Injector} from '@angular/core';
+import {CrudService} from "../../../common/crud.service";
+import {HttpClient} from "@angular/common/http";
+import {AuthenticationService} from "../../authentication/services/authentication.service";
+import {ProfileModel} from "../common/profile.model";
+import {map} from "rxjs/operators";
 
 @Injectable()
-export class ProfileService implements Resolve<any> {
-  rows: any;
-  onPricingChanged: BehaviorSubject<any>;
+export class ProfileService extends CrudService<ProfileModel>{
 
-  /**
-   * Constructor
-   *
-   * @param {HttpClient} _httpClient
-   */
-  constructor(private _httpClient: HttpClient) {
-    // Set the defaults
-    this.onPricingChanged = new BehaviorSubject({});
-  }
 
-  /**
-   * Resolver
-   *
-   * @param {ActivatedRouteSnapshot} route
-   * @param {RouterStateSnapshot} state
-   * @returns {Observable<any> | Promise<any> | any}
-   */
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    return new Promise<void>((resolve, reject) => {
-      Promise.all([this.getDataTableRows()]).then(() => {
-        resolve();
-      }, reject);
-    });
-  }
-
-  /**
-   * Get rows
-   */
-  getDataTableRows(): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-      this._httpClient.get('api/profile-data').subscribe((response: any) => {
-        this.rows = response;
-        this.onPricingChanged.next(this.rows);
-        resolve(this.rows);
-      }, reject);
-    });
+  constructor(private injector: Injector) {
+    super(
+        injector.get(HttpClient),
+        injector.get(AuthenticationService),
+        'profile',
+        map(data => new ProfileModel(data as ProfileModel))
+    );
   }
 }

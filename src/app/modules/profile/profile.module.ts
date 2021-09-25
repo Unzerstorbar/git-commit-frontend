@@ -9,6 +9,7 @@ import {ProfileService} from "./services/profile.service";
 import {ProfileEditorComponent} from "./components/profile-editor/profile-editor.component";
 import {ProfileListComponent} from "./components/profile-list/profile-list.component";
 import {AuthGuard} from "../../common/auth.guard";
+import {UserService} from "./services/user.service";
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [ProfileComponent, ProfileEditorComponent, ProfileListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -37,6 +38,9 @@ const routes: Routes = [
     CoreCommonModule,
     ContentHeaderModule,
   ],
-  providers: [ProfileService]
+  providers: [
+    ProfileService,
+    UserService,
+  ]
 })
 export class ProfileModule { }

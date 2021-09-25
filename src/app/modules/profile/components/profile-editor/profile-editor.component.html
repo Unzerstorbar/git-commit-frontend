@@ -1,1 +1,299 @@
-<p>profile-editor works!</p>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+
+        <section id="page-account-settings">
+            <div class="row nav-vertical d-flex">
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <ul ngbNav #navVertical="ngbNav" class="nav nav-pills flex-column nav-left">
+                        <li class="nav-item" ngbNavItem>
+                            <a ngbNavLink
+                               class="nav-link d-flex py-75"
+                               id="account-pill-general"
+                               data-toggle="pill"
+                               href="#account-vertical-general"
+                               aria-expanded="true"
+                            >
+                                <i data-feather="user" class="font-medium-3 mr-1"></i>
+                                <span class="font-weight-bold">Основное</span>
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <a href="javascript:void(0);" class="mr-25">
+                                                <img [src]="avatarImage || 'assets/images/avatars/no-avatar.jpg'"
+                                                     class="rounded mr-50"
+                                                     alt="Avatar"
+                                                     height="76"
+                                                     width="80"
+                                                />
+                                            </a>
+                                            <div class="media-body mt-75 ml-1">
+                                                <button
+                                                        (click)="file.click()"
+                                                        for="account-upload"
+                                                        class="btn btn-sm btn-primary mb-75 mr-75"
+                                                        rippleEffect
+                                                >
+                                                    Загрузить
+                                                </button>
+                                                <input type="file"
+                                                       #file
+                                                       id="account-upload"
+                                                       hidden
+                                                       accept="image/*"
+                                                       (change)="uploadImage($event)"
+                                                />
+                                                <button class="btn btn-sm btn-outline-secondary mb-75" rippleEffect>Сбросить</button>
+                                                <p>Разрешено загружать JPG, GIF or PNG. Максимальный размер 800Кб</p>
+                                            </div>
+                                        </div>
+
+                                        <form class="validate-form mt-2" (ngSubmit)="updatePartData('general')">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="second-name">Фамилия</label>
+                                                        <input
+                                                                type="text"
+                                                                [(ngModel)]="data?.general.second_name"
+                                                                class="form-control"
+                                                                id="second-name"
+                                                                name="name"
+                                                                placeholder="Фамилия"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="first-name">Имя</label>
+                                                        <input
+                                                                type="text"
+                                                                [(ngModel)]="data?.general.first_name"
+                                                                class="form-control"
+                                                                id="first-name"
+                                                                name="name"
+                                                                placeholder="Имя"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="last-name">Отчество</label>
+                                                        <input
+                                                                type="text"
+                                                                [(ngModel)]="data?.general.last_name"
+                                                                class="form-control"
+                                                                id="last-name"
+                                                                name="name"
+                                                                placeholder="Отчество"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="account-e-mail">E-mail</label>
+                                                        <input
+                                                                type="email"
+                                                                [(ngModel)]="data?.general.email"
+                                                                class="form-control"
+                                                                id="account-e-mail"
+                                                                name="email"
+                                                                placeholder="Email"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="submit" class="btn btn-primary mt-2 mr-1" rippleEffect>Сохранить</button>
+                                                    <button type="reset" class="btn btn-outline-secondary mt-2" rippleEffect>Отмена</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+
+                        <li class="nav-item" ngbNavItem>
+                            <a ngbNavLink
+                               class="nav-link d-flex py-75"
+                               id="account-pill-password"
+                               data-toggle="pill"
+                               href="#account-vertical-password"
+                               aria-expanded="false"
+                            >
+                                <i data-feather="lock" class="font-medium-3 mr-1"></i>
+                                <span class="font-weight-bold">Смена пароля</span>
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <!-- form -->
+                                        <form class="validate-form"
+                                              [formGroup]="passwordForm"
+                                              (ngSubmit)="updatePassword($event)">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-old-password">Старый пароль</label>
+                                                        <div class="input-group form-password-toggle input-group-merge">
+                                                            <input
+                                                                    [type]="passwordTextTypeOld ? 'text' : 'password'"
+                                                                    class="form-control"
+                                                                    formControlName="old_password"
+                                                                    id="old-password"
+                                                                    name="password"
+                                                                    placeholder="Старый пароль"
+                                                            />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text cursor-pointer">
+                                                                    <i class="feather font-small-4"
+                                                                       [ngClass]="{
+                                                                          'icon-eye-off': passwordTextTypeOld,
+                                                                          'icon-eye': !passwordTextTypeOld
+                                                                       }"
+                                                                       (click)="togglePasswordTextTypeOld()">
+                                                                    </i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-new-password">Новый пароль</label>
+                                                        <div class="input-group form-password-toggle input-group-merge">
+                                                            <input
+                                                                    [type]="passwordTextTypeNew ? 'text' : 'password'"
+                                                                    id="account-new-password"
+                                                                    formControlName="password"
+                                                                    name="password"
+                                                                    class="form-control"
+                                                                    placeholder="Новый пароль"
+                                                            />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text cursor-pointer">
+                                                                    <i class="feather font-small-4"
+                                                                       [ngClass]="{
+                                                                            'icon-eye-off': passwordTextTypeNew,
+                                                                            'icon-eye': !passwordTextTypeNew
+                                                                        }"
+                                                                        (click)="togglePasswordTextTypeNew()">
+
+                                                                    </i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-retype-new-password">Повторите пароль</label>
+                                                        <div class="input-group form-password-toggle input-group-merge">
+                                                            <input
+                                                                    [type]="passwordTextTypeRetype ? 'text' : 'password'"
+                                                                    class="form-control"
+                                                                    id="account-retype-new-password"
+                                                                    formControlName="c_password"
+                                                                    name="c_password"
+                                                                    placeholder="Повторите пароль"
+                                                            />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text cursor-pointer">
+                                                                    <i class="feather font-small-4"
+                                                                       [ngClass]="{
+                                                                            'icon-eye-off': passwordTextTypeRetype,
+                                                                            'icon-eye': !passwordTextTypeRetype
+                                                                        }"
+                                                                        (click)="togglePasswordTextTypeRetype()">
+
+                                                                    </i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="submit" class="btn btn-primary mr-1 mt-1" rippleEffect>Сохранит</button>
+                                                    <button type="reset" class="btn btn-outline-secondary mt-1" rippleEffect>Отмена</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li class="nav-item" ngbNavItem>
+                            <a ngbNavLink
+                               class="nav-link d-flex py-75"
+                               id="account-pill-info"
+                               data-toggle="pill"
+                               href="#account-vertical-info"
+                               aria-expanded="false"
+                            >
+                                <i data-feather="info" class="font-medium-3 mr-1"></i>
+                                <span class="font-weight-bold">Информация</span>
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="validate-form" (ngSubmit)="updatePartData('about')">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="accountTextarea">О себе</label>
+                                                        <textarea [(ngModel)]="data?.about.about"
+                                                                  class="form-control"
+                                                                  id="accountTextarea"
+                                                                  name="accountTextarea"
+                                                                  rows="4"
+                                                                  placeholder="Информация о себе">
+
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-birth-date">Дата рождения</label>
+                                                        <input type="date"
+                                                               [(ngModel)]="data?.about.birthday"
+                                                               id="account-birth-date"
+                                                               class="form-control"
+                                                               name="account-birth-date"
+                                                               placeholder="Дата рождения"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-phone">Телефон</label>
+                                                        <input type="text"
+                                                               [(ngModel)]="data?.about.phone"
+                                                               class="form-control"
+                                                               id="account-phone"
+                                                               placeholder="Номер телефона"
+                                                               name="phone"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="submit" class="btn btn-primary mt-1 mr-1" rippleEffect>Сохранить</button>
+                                                    <button type="reset" class="btn btn-outline-secondary mt-1" rippleEffect>Отменить</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+                </div>
+                <div [ngbNavOutlet]="navVertical" class="col-12 col-md-9"></div>
+            </div>
+        </section>
+    </div>
+</div>

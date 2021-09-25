@@ -22,9 +22,10 @@ export class AuthenticationService {
     return this.userData.getValue();
   }
 
-  getAuthorizationHeaders() {
+  getAuthorizationHeaders(additionHeaders?: {[key: string]: any}) {
       return new HttpHeaders({
-          'Authorization': `${this.getUserData.token_type} ${this.getUserData.access_token}`
+          'Authorization': `${this.getUserData.token_type} ${this.getUserData.access_token}`,
+          ...(additionHeaders ? additionHeaders : {})
       });
   }
 

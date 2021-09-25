@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import {ProfileService} from "../../services/profile.service";
+import {ActivatedRoute} from "@angular/router";
+import {ProfileModel} from "../../common/profile.model";
 
 @Component({
   selector: 'app-profile',
@@ -12,17 +13,15 @@ import {ProfileService} from "../../services/profile.service";
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  public contentHeader: object;
-  public data: any;
+  public data: ProfileModel;
   public toggleMenu = true;
-  public Monthly = false;
-  public toggleNavbarRef = false;
   public loadMoreRef = false;
 
   private _unsubscribeAll: Subject<any>;
 
   constructor(
-      private _pricingService: ProfileService,
+      private profileService: ProfileService,
+      private router: ActivatedRoute,
       private sanitizer: DomSanitizer,
   ) {
     this._unsubscribeAll = new Subject();
@@ -36,38 +35,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._pricingService.onPricingChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-      this.data = response;
+    this.router.params.subscribe(params => {
+      const id = +params['id'];
+      this.profileService.get(id).subscribe(data => {
+        this.data = data;
+      });
     });
-
-    // content header
-    this.contentHeader = {
-      headerTitle: 'Profile',
-      actionButton: true,
-      breadcrumb: {
-        type: '',
-        links: [
-          {
-            name: 'Home',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'Pages',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'Profile',
-            isLink: false
-          }
-        ]
-      }
-    };
   }
 
   ngOnDestroy(): void {
-    // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
