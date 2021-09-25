@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselImages } from "../carousel/carousel.component";
+import {EventPageService} from "./event-page.service";
+import {ActivatedRoute} from "@angular/router";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-event-page',
@@ -17,9 +20,16 @@ export class EventPageComponent implements OnInit {
     'assets/images/slider/06.jpg'
   ];
 
-  constructor() { }
+  constructor(private eventPageService: EventPageService, private route: ActivatedRoute) { }
+
+  data
 
   ngOnInit(): void {
+    this.route.params.pipe(map(params => {
+      this.eventPageService.getData(params.id).subscribe(getData => {
+        this.data = getData;
+      })
+    })).subscribe();
   }
 
 }

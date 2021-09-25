@@ -1,0 +1,115 @@
+@import '@core/scss/base/pages/app-ecommerce.scss';
+@import '@core/scss/angular/libs/form-wizard.component.scss';
+@import '@core/scss/base/plugins/forms/form-validation.scss';
+@import '@core/scss/angular/libs/ratings.component.scss';
+
+.ecommerce-card {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  justify-content: center;
+}
+
+.title {
+  margin: 24px 0 18px 0;
+}
+.data-event {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.chips {
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 25px;
+  border: 1px solid;
+}
+
+.desc-body {
+  max-width: 800px;
+  margin-right: auto;
+  display: flex;
+  max-height: 400px;
+  flex-direction: column;
+  justify-content: center;
+}
+.description {
+  overflow: auto;
+}
+
+.right-border {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 20px;
+}
+
+.btn-danger {
+  width: max-content;
+}
+
+.button-action {
+  border-radius: 5px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 10px 22px;
+}
+
+.bg-light-secondary {
+  display: flex;
+  grid-gap: 5px;
+  margin: 9px 0;
+  align-items: center;
+  border: none;
+  border-radius: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.party-info {
+  span:first-child {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 6px;
+  }
+  span:last-child {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+  }
+}
+
+.progress {
+  border-radius: 0;
+  .progress-bar {
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+  }
+}
+
+.status {
+  padding: 3px 11px;
+  margin: 8px;
+  position: absolute;
+  left: 0;
+}
+
+.item-img {
+  align-self: flex-start;
+}
