@@ -1,6 +1,6 @@
 <div class="card ecommerce-card" *ngIf="eventItem">
-    <div class="item-img">
-        <a href="" style="position: relative">
+    <div class="item-img" style="width: 194px; height: 264px">
+        <a style="position: relative">
             <ng-container [ngSwitch]="eventItem.event_status.id">
                 <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
                 <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
@@ -9,7 +9,7 @@
                 <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
                 <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
             </ng-container>
-            <img style="width: 194px; height: 264px" [src]="eventItem.image.name" [alt]="eventItem.image.name">
+            <img *ngIf="eventItem?.image?.name" style="width: 194px; height: 264px" [src]="eventItem?.image?.name" [alt]="eventItem?.image?.name">
         </a>
 
     </div>
@@ -26,11 +26,11 @@
     <div class="item-options right-border">
         <div class="party-info">
             <span>Участники</span>
-            <span>20</span>
+            <span>{{eventItem.participants}}</span>
         </div>
         <div class="party-info">
             <span>Волонтеры</span>
-            <span>9/10</span>
+            <span>{{eventItem.organizers}}/10</span>
         </div>
         <div class="party-info">
             <span>Собрано средств</span>
@@ -42,7 +42,7 @@
         <button class="avatar bg-light-secondary"><i data-feather='mail'></i>Чат</button>
         <div style="display: flex; grid-gap: 8px">
             <button class="btn-outline-danger button-action">Отменить участие</button>
-            <button class="btn-outline-secondary button-action" [routerLink]="'event/' + eventItem.id">Перейти</button>
+            <button class="btn-outline-secondary button-action" [routerLink]="'events/' + eventItem.id">Перейти</button>
         </div>
     </div>
 </div>

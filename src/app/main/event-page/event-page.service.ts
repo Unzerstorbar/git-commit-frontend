@@ -16,7 +16,7 @@ export class EventPageService {
     header;
     url = environment.apiUrl + '/'
     constructor(private http: HttpClient) {
-        this.token = new BehaviorSubject<UserData>(JSON.parse(localStorage.getItem('token')));
+        this.token = new BehaviorSubject<UserData>(JSON.parse(localStorage.getItem('userData')));
         this.header = new HttpHeaders().set("Authorization", 'Bearer ' + this.token.value.access_token);
     }
 
