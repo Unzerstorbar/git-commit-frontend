@@ -13,6 +13,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {EcommerceCheckoutItemComponent} from "../events/ecommerce-checkout-item/ecommerce-checkout-item.component";
 import {CoreTouchspinModule} from "../../../@core/components/core-touchspin/core-touchspin.module";
 import {PlateEventComponent} from "../events/plate-event/plate-event.component";
+import {MomentPipe} from "../../../@core/pipes/moment.pipe";
 
 const routes = [
   {
@@ -37,6 +38,7 @@ const routes = [
       SampleComponent,
       HomeComponent,
       EventsComponent,
+      MomentPipe,
       PlateEventComponent,
       EcommerceCheckoutItemComponent],
     imports: [

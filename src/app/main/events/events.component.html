@@ -2,14 +2,16 @@
 <ul ngbNav #nav="ngbNav" class="nav nav-pills">
     <li ngbNavItem>
         <a ngbNavLink>Список</a>
-        <ng-template ngbNavContent>
-            <app-plate-event></app-plate-event>
-            <app-plate-event></app-plate-event>
-            <app-plate-event></app-plate-event>
-        </ng-template>
+            <ng-template ngbNavContent>
+                <p>
+                <app-plate-event *ngFor="let event of eventList" [eventItem]="event"></app-plate-event>
+<!--                <app-plate-event></app-plate-event>-->
+<!--                <app-plate-event></app-plate-event>-->
+                </p>
+            </ng-template>
     </li>
     <li ngbNavItem>
-        <a ngbNavLink>Календарем</a>
+        <a ngbNavLink>Календарь</a>
         <ng-template ngbNavContent>
             <p>
                 Pudding candy canes sugar plum cookie chocolate cake powder croissant. Carrot cake tiramisu danish
@@ -20,17 +22,6 @@
             </p>
         </ng-template>
     </li>
-<!--    <li ngbNavItem [disabled]="true">-->
-<!--        <a href="javascript:void(0)" ngbNavLink>Disabled</a>-->
-<!--        <ng-template ngbNavContent>-->
-<!--            <p>-->
-<!--                Cake croissant lemon drops gummi bears carrot cake biscuit cupcake croissant. Macaroon lemon drops-->
-<!--                muffin jelly sugar plum chocolate cupcake danish icing. Soufflé tootsie roll lemon drops sweet-->
-<!--                roll cake icing cookie halvah cupcake.Chupa chups pie jelly pie tootsie roll dragée cookie-->
-<!--                caramels sugar plum. Jelly oat cake wafer pie cupcake chupa chups jelly-o gingerbread.-->
-<!--            </p>-->
-<!--        </ng-template>-->
-<!--    </li>-->
     <li ngbNavItem>
         <a ngbNavLink>Карта</a>
         <ng-template ngbNavContent>
@@ -70,7 +61,6 @@
     <div class="desc-body">
         <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
             <div class="data-event font-weight-bolder">
-<!--                22 октября-->
                 <form class="form-inline">
                     <div class="form-group">
                         <div class="input-group">
