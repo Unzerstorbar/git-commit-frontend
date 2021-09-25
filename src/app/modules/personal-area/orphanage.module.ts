@@ -42,4 +42,4 @@ const routes: Routes = [
     NgbNavModule,
   ],
 })
-export class ProfileModule { }
+export class OrphanageModule { }

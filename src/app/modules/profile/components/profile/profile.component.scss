@@ -1,0 +1,28 @@
+@import '@core/scss/base/pages/page-profile';
+
+.logo_block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+
+  > * {
+    margin: 0 2rem;
+  }
+
+  > img {
+    width: 80px;
+    height: 80px;
+  }
+
+  > h1 {
+    font-size: 3rem;
+  }
+}
+
+.navigation_events{
+  padding: 0.5rem;
+  > ul {
+    justify-content: center;
+  }
+}

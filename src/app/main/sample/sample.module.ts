@@ -18,7 +18,7 @@ import {EventPageComponent} from "../event-page/event-page.component";
 import {CardSnippetModule} from "../../../@core/components/card-snippet/card-snippet.module";
 import {GoogleMapsModule} from "@angular/google-maps";
 import {ProfileComponent} from "../profile/profile.component";
-import {ProfileEditorComponent} from "../profile-editor/profile-editor.component";
+import {ProfileEditorComponent} from "../../modules/profile/components/profile-editor/profile-editor.component";
 import {EventsListComponent} from "../events-list/events-list.component";
 import {EventEditorComponent} from "../event-editor/event-editor.component";
 import {AboutComponent} from "../about/about.component";
@@ -78,23 +78,7 @@ const routes: Routes = [
     component: HomeComponent,
     data: { animation: 'home' },
     canActivate: [AuthGuard]
-  },
-    {
-        path: 'profile/:id',
-        component: ProfileComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'profile/list',
-        component: ProfileComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'profile/edit/:id',
-        pathMatch: 'full',
-        component: ProfileEditorComponent,
-        canActivate: [AuthGuard]
-    }
+  }
 ];
 
 @NgModule({
