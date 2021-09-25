@@ -34,7 +34,7 @@
                 <div>
                     <div style="margin: 20px 0">Организаторы</div>
                     <div style="display: flex; align-items: center">
-                        <span style="margin-right: 10px; font-weight: 500">10</span> <div class="avatar-group">
+                        <span style="margin-right: 10px; font-weight: 500">{{data.organizers}}</span> <div class="avatar-group">
                                 <div class="avatar pull-up">
                                     <img
                                             class="media-object"
@@ -80,13 +80,13 @@
                                             width="32"
                                     />
                                 </div>
-                            </div> <span class="text-primary" style="margin: 5px">еще +5</span>
+                            </div> <span class="text-primary" style="margin: 5px">еще +{{data.organizers - 5}}</span>
                     </div>
                 </div>
                 <div>
                     <div style="margin: 20px 0">Участники</div>
                     <div style="display: flex; align-items: center">
-                        <span style="margin-right: 10px; font-weight: 500">505</span>
+                        <span style="margin-right: 10px; font-weight: 500">{{data.participants}}</span>
                         <div class="avatar-group">
                                 <div class="avatar pull-up">
                                     <img
@@ -133,7 +133,7 @@
                                             width="32"
                                     />
                                 </div>
-                            </div> <span class="text-primary" style="margin: 5px">еще +500</span>
+                            </div> <span class="text-primary" style="margin: 5px">еще +{{data.participants - 5}}</span>
                     </div>
                 </div>
             </div>
