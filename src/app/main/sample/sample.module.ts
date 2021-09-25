@@ -14,11 +14,24 @@ import {EcommerceCheckoutItemComponent} from "../events/ecommerce-checkout-item/
 import {CoreTouchspinModule} from "../../../@core/components/core-touchspin/core-touchspin.module";
 import {PlateEventComponent} from "../events/plate-event/plate-event.component";
 import {MomentPipe} from "../../../@core/pipes/moment.pipe";
+import {EventPageComponent} from "../event-page/event-page.component";
+import {CardSnippetModule} from "../../../@core/components/card-snippet/card-snippet.module";
+import {GoogleMapsModule} from "@angular/google-maps";
 
 const routes = [
   {
     path: 'events',
     component: EventsComponent,
+    children: [
+      {
+          path: 'event/:id',
+          redirectTo: '/event/:id',
+      }
+    ],
+  },
+  {
+    path: 'event/:id',
+    component: EventPageComponent,
     data: { animation: 'sample' }
   },
   {
@@ -40,6 +53,7 @@ const routes = [
       EventsComponent,
       MomentPipe,
       PlateEventComponent,
+      EventPageComponent,
       EcommerceCheckoutItemComponent],
     imports: [
         RouterModule.forChild(routes),
@@ -47,7 +61,9 @@ const routes = [
         TranslateModule,
         CoreCommonModule,
         NgbModule,
-        CoreTouchspinModule
+        CoreTouchspinModule,
+        CardSnippetModule,
+        GoogleMapsModule
     ],
   exports: [SampleComponent, HomeComponent]
 })

@@ -1,0 +1,23 @@
+<div class="card">
+
+    <google-map style="height: 234px; width: 350px"></google-map>
+    <div class="col-md-6 col-sm-12">
+        <section id="basic-carousel">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="card-title">Галерея</h4>
+                    <div class="card-body">
+                        <ngb-carousel *ngIf="carouselImages">
+                            <ng-template *ngFor="let image of carouselImages" ngbSlide>
+                                <div class="carousel-img-wrapper">
+                                    <img [src]="image" class="img-fluid" alt="Random first slide" />
+                                </div>
+                                <div class="carousel-caption"></div>
+                            </ng-template>
+                        </ngb-carousel>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

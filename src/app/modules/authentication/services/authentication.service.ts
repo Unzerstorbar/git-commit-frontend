@@ -12,7 +12,7 @@ import {Token} from "../utils/authentication.types";
 })
 export class AuthenticationService {
 
-  private token: BehaviorSubject<Token>;
+  public token: BehaviorSubject<Token>;
 
   constructor(private http: HttpClient) {
     this.token = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('token')));

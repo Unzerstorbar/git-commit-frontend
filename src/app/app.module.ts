@@ -74,7 +74,6 @@ const appRoutes: Routes = [
     SampleModule,
     AuthenticationModule,
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule {}

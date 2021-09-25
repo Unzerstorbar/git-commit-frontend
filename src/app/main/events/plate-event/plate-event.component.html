@@ -1,14 +1,19 @@
-<div class="card event-plate" *ngIf="eventItem">
-    <ng-container [ngSwitch]="eventItem.event_status.id">
-        <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
-        <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
-        <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="name3"></ng-container>
-        <ng-container *ngSwitchCase="4" [ngTemplateOutlet]="name4"></ng-container>
-        <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
-        <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
-    </ng-container>
-    <img style="width: 194px; height: 264px" [src]="eventItem.image.name" [alt]="eventItem.image.name">
-    <div class="desc-body">
+<div class="card ecommerce-card" *ngIf="eventItem">
+    <div class="item-img">
+        <a href="" style="position: relative">
+            <ng-container [ngSwitch]="eventItem.event_status.id">
+                <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
+                <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
+                <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="name3"></ng-container>
+                <ng-container *ngSwitchCase="4" [ngTemplateOutlet]="name4"></ng-container>
+                <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
+                <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
+            </ng-container>
+            <img style="width: 194px; height: 264px" [src]="eventItem.image.name" [alt]="eventItem.image.name">
+        </a>
+
+    </div>
+    <div class="card-body desc-body">
         <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
             <div class="data-event font-weight-bolder"><!--22 октября-->{{eventItem.date}}</div>
             <div *ngFor="let topic of eventItem.topic" class="chips text-info">{{topic.name}}</div>
@@ -18,7 +23,7 @@
             <p>{{eventItem.description}}</p>
         </div>
     </div>
-    <div class="right-border">
+    <div class="item-options right-border">
         <div class="party-info">
             <span>Участники</span>
             <span>20</span>
@@ -37,7 +42,7 @@
         <button class="avatar bg-light-secondary"><i data-feather='mail'></i>Чат</button>
         <div style="display: flex; grid-gap: 8px">
             <button class="btn-outline-danger button-action">Отменить участие</button>
-            <button class="btn-outline-secondary button-action">Перейти</button>
+            <button class="btn-outline-secondary button-action" [routerLink]="'event/' + eventItem.id">Перейти</button>
         </div>
     </div>
 </div>

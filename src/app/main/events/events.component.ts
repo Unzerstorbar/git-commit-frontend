@@ -34,6 +34,7 @@ export class EventsComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+
   addEvents() {
     this.addEvent = true;
   }

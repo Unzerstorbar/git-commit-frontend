@@ -1,0 +1,51 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <!-- Basic Carousel And Optional Carousel start -->
+    <section id="basic-carousel">
+      <div class="row">
+        <!-- Basic carousel start -->
+        <div class="col-md-6 col-sm-12">
+            <h4 class="card-title">Basic Example</h4>
+            <div class="card-body">
+              <!-- ngb-carousel component -->
+              <ngb-carousel *ngIf="carouselImages">
+                <ng-template ngbSlide>
+                  <div class="carousel-img-wrapper">
+                    <img [src]="carouselImages.one" class="img-fluid" alt="Random first slide" />
+                  </div>
+                  <div class="carousel-caption"></div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="carousel-img-wrapper">
+                    <img [src]="carouselImages.two" class="img-fluid" alt="Random second slide" />
+                  </div>
+                  <div class="carousel-caption"></div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="carousel-img-wrapper">
+                    <img [src]="carouselImages.three" class="img-fluid" alt="Random third slide" />
+                  </div>
+                  <div class="carousel-caption"></div>
+                </ng-template>
+              </ngb-carousel>
+              <!-- ngb-carousel component -->
+            </div>
+        </div>
+        <!-- Basic carousel end -->
+        <!-- Optional captions start -->
+        <!-- Optional captions end -->
+      </div>
+    </section>
+    <!-- Basic Carousel And Optional Carousel end -->
+
+    <!-- Carousel Options start -->
+    <!-- Carousel Options end -->
+
+    <!-- Navigation Carousel Start -->
+    <!-- Navigation Carousel end -->
+
+    <!-- Navigation Arrow Carousel start -->
+    <!-- CrossFade Carousel End -->
+  </div>
+</div>
