@@ -1,35 +1,10 @@
 @import "src/assets/scss/mixins/import";
 @import '@core/scss/base/pages/app-ecommerce.scss';
 
-ul {
-  display: flex;
-  align-items: center;
+ul{
   flex-direction: row;
-  @include setFont(14px, 17px, 700, normal, rgb(var(--color-text-base-rgb)));
-  list-style-type: none;
-  height: 38px;
-  margin: 0;
-  padding: 0;
-  max-width: 256px;
-
-  > li {
-    marker: none;
-    padding: 10px 20px;
-
-    > a {
-      color: unset;
-    }
-
-    >a.active {
-      color: rgb(var(--color-btn-blue-rgb));
-    }
-
-    &.devider {
-      padding: 0;
-    }
-  }
-}
-
-.content_wrapper {
-  margin-top: 12px;
+  background: rgb(var(--color-system-block-rgb));
+  width: 18rem;
+  border-radius: 6px;
+  padding: 0 5px;
 }

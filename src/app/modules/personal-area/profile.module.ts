@@ -8,12 +8,13 @@ import { ChildrenHomeStudentsListComponent } from './components/children-home-st
 import {CoreCommonModule} from "../../../@core/common.module";
 import { OrphanageEditorComponent } from './components/orphanage-editor/orphanage-editor.component';
 import { OrphanageListComponent } from './components/orphanage-list/orphanage-list.component';
+import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 const routes: Routes = [
   {
     path: ':id',
-    component: ChildrenHomeCardComponent,
+    component: ChildrenHomeProfileComponent,
   },
   {
     path: 'edit/:id',
@@ -22,10 +23,6 @@ const routes: Routes = [
   {
     path: 'list',
     component: OrphanageListComponent
-  },
-  {
-    path: 'pupil/:id',
-    component: ChildrenHomeStudentsListComponent
   },
 ];
 
@@ -38,11 +35,11 @@ const routes: Routes = [
     OrphanageEditorComponent,
     OrphanageListComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        CoreCommonModule,
-    ],
-  bootstrap: [ChildrenHomeProfileComponent]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    CoreCommonModule,
+    NgbNavModule,
+  ],
 })
 export class ProfileModule { }
