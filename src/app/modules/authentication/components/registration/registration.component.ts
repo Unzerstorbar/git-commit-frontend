@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subject} from "rxjs";
 import {CoreConfigService} from "../../../../../@core/services/config.service";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
 
@@ -18,6 +18,12 @@ export class RegistrationComponent implements OnInit {
   public cPasswordTextType: boolean;
   public registerForm: FormGroup;
   public submitted = false;
+
+  roleList = [
+    {id: 1, name: 'Воспитаник'},
+    {id: 2, name: 'Волонтер'},
+    {id: 3, name: 'Спонсор'},
+  ]
 
   isRequestFail = false;
 
@@ -53,6 +59,15 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.controls;
   }
 
+  getDropDownPlaceholder(){
+    const roleID = this.registerForm.get('role').value;
+    if (!roleID) {
+      return 'Выберите роль';
+    }
+
+    return this.roleList.find(role => role.id === roleID).name;
+  }
+
   onSubmit() {
     this.submitted = true;
 
@@ -62,7 +77,6 @@ export class RegistrationComponent implements OnInit {
 
     const userData = this.registerForm.value;
     this.auth.registration(userData).subscribe(({success}) => {
-      debugger;
       if (success) {
         this._router.navigate(['/authentication/sign_in']);
       } else {
@@ -72,16 +86,30 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registerForm = this._formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      c_password: ['', Validators.required]
-    });
 
+    this.initFormRegister();
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       this.coreConfig = config;
     });
+  }
+
+  private initFormRegister() {
+    this.registerForm = this._formBuilder.group({
+      role: ['', Validators.required],
+      first_name: ['', Validators.required],
+      second_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      birthday: ['', Validators.required],
+      phone: [''],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      c_password: ['', Validators.required],
+      document_series: [''],
+      document_number: [''],
+      document_issued: [''],
+      document_issued_date: [''],
+      document_department_code: [''],
+    }, {updateOn: 'blur'});
   }
 
 

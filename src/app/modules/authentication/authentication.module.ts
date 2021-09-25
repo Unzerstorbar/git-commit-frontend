@@ -4,6 +4,7 @@ import {AuthorizationComponent} from "./components/authorization/authorization.c
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {RouterModule, Routes} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
     {
@@ -21,10 +22,11 @@ const routes: Routes = [
       AuthorizationComponent,
       RegistrationComponent,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        NgbDropdownModule,
+    ]
 })
 export class AuthenticationModule { }

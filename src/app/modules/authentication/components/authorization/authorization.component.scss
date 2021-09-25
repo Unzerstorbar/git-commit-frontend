@@ -1,5 +1,7 @@
 @import '@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
 @import '@core/scss/base/pages/page-auth.scss';
+@import "src/assets/scss/variables/color";
+@import "src/assets/scss/mixins/font";
 
 .auth-help-icon {
   position: absolute;
@@ -13,4 +15,31 @@
 
 .request-err{
   margin-bottom: 1rem;
+}
+
+.auth-wrapper.auth-v1 .auth-inner {
+  max-width: 600px;
+}
+
+.card-body{
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.auth_header{
+  @include setFont(24px, 30px, 600);
+  color: rgb(var(--color-text-base-rgb))
+}
+
+.title_logo{
+  @include setFont(61px, 74px, 700);
+  color: rgb(var(--color-btn-blue-rgb));
+}
+
+.brand-logo{
+  align-items: center;
+
+  &__img{
+    margin: 15px;
+  }
 }

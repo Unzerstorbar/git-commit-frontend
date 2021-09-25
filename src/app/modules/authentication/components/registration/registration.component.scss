@@ -1,6 +1,58 @@
 @import '@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
 @import '@core/scss/base/pages/page-auth.scss';
+@import "src/assets/scss/variables/color";
+@import "src/assets/scss/mixins/font";
 
 .request-err {
   margin-bottom: 1rem;
+}
+
+.auth-wrapper.auth-v1 .auth-inner {
+  max-width: 600px;
+}
+
+.card-body{
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.auth_header{
+  @include setFont(24px, 30px, 600);
+  color: rgb(var(--color-text-base-rgb))
+}
+
+.sub_header{
+  @include setFont(14px, 17px, 600);
+}
+
+.auth_header,
+.sub_header {
+  margin: 20px 6px 7px;
+}
+
+
+.form_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-group{
+  margin: 7px 6px;
+
+  &__role{
+    max-width: 50%;
+  }
+
+  &__date{
+    max-width: 50%;
+  }
+}
+
+.registration_btn{
+  margin-top: 30px;
+}
+
+.invalid-feedback__role{
+  display: block;
 }

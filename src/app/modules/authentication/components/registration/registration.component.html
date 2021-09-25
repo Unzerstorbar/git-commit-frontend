@@ -4,58 +4,165 @@
         <div class="card mb-0">
             <div class="card-body">
                 <a href="javascript:void(0);" class="brand-logo">
-                    <img src="{{ coreConfig.app.appLogoImage }}" alt="brand-logo" height="28" />
-                    <h2 class="brand-text text-primary ml-1">Помощь детям</h2>
+                    <img src="/assets/images/icons/logo.svg" alt="brand-logo" height="28" />
+                    <h2 class="brand-text text-primary ml-1">Добро детям</h2>
                 </a>
 
+                <div class="auth_header">Регистрация</div>
+
                 <form class="auth-register-form mt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="register-name" class="form-label">Имя пользователя</label>
+
+                    <div class="form-group form-group__role">
+                        <label for="register-name" class="form-label">Роль</label>
+                        <div ngbDropdown>
+                            <button ngbDropdownToggle
+                                    type="button"
+                                    class="btn btn-outline-primary mr-2 form-control"
+                                    id="dropdownRole">
+                                {{getDropDownPlaceholder()}}
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownRole">
+                                <ng-container *ngFor="let role of roleList">
+                                    <button ngbDropdownItem
+                                            type="button"
+                                            (click)="registerForm.controls['role'].setValue(role.id)"
+                                    >
+                                        {{role.name}}
+                                    </button>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div *ngIf="submitted && f.role.errors" class="invalid-feedback invalid-feedback__role">
+                            <div *ngIf="f.role.errors.required">Обязательное поле</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form_row">
+                        <div class="form-group">
+                            <label for="register-name" class="form-label">Фамилия</label>
+                            <input
+                                    type="text"
+                                    formControlName="second_name"
+                                    class="form-control"
+                                    placeholder="Фамилия"
+                                    aria-describedby="register-name"
+                                    tabindex="1"
+                                    autofocus
+                                    [ngClass]="{ 'is-invalid': submitted && f.second_name.errors }"
+                            />
+                            <div *ngIf="submitted && f.second_name.errors" class="invalid-feedback">
+                                <div *ngIf="f.second_name.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-name" class="form-label">Имя</label>
+                            <input
+                                    type="text"
+                                    formControlName="first_name"
+                                    class="form-control"
+                                    placeholder="Имя"
+                                    aria-describedby="register-name"
+                                    tabindex="1"
+                                    autofocus
+                                    [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"
+                            />
+                            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                                <div *ngIf="f.first_name.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-name" class="form-label">Отчество</label>
+                            <input
+                                    type="text"
+                                    formControlName="last_name"
+                                    class="form-control"
+                                    placeholder="Отчество"
+                                    aria-describedby="register-name"
+                                    tabindex="1"
+                                    autofocus
+                                    [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"
+                            />
+                            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                                <div *ngIf="f.last_name.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group form-group__date">
+                        <label for="register-name" class="form-label">Дата рождения</label>
                         <input
-                                type="text"
-                                formControlName="name"
+                                type="date"
+                                formControlName="birthday"
                                 class="form-control"
-                                placeholder="Имя"
+                                placeholder="Дата рождения"
                                 aria-describedby="register-name"
                                 tabindex="1"
                                 autofocus
-                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                                [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }"
                         />
-                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                            <div *ngIf="f.name.errors.required">Обязательное поле</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="register-email" class="form-label">Email</label>
-                        <input
-                                type="text"
-                                formControlName="email"
-                                class="form-control"
-                                placeholder="john@example.com"
-                                aria-describedby="register-email"
-                                tabindex="2"
-                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                        />
-                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">Обязательное поле</div>
-                            <div *ngIf="f.email.errors.email">Не правильный формат email</div>
+                        <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">
+                            <div *ngIf="f.birthday.errors.required">Обязательное поле</div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="register-password" class="form-label">Пароль</label>
 
-                        <div class="input-group input-group-merge form-password-toggle">
+                    <div class="sub_header">Контакты</div>
+
+                    <div class="form_row">
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">Телефон</label>
                             <input
-                                    [type]="passwordTextType ? 'text' : 'password'"
-                                    formControlName="password"
-                                    class="form-control form-control-merge"
-                                    placeholder="············"
-                                    aria-describedby="register-password"
-                                    tabindex="3"
-                                    [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
+                                    type="phone"
+                                    formControlName="phone"
+                                    class="form-control"
+                                    placeholder="Телефон"
+                                    aria-describedby="register-email"
+                                    tabindex="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
                             />
-                            <div class="input-group-append">
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                <div *ngIf="f.phone.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">E-mail</label>
+                            <input
+                                    type="text"
+                                    formControlName="email"
+                                    class="form-control"
+                                    placeholder="XXXX.@yandex.ru"
+                                    aria-describedby="register-email"
+                                    tabindex="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                            />
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Обязательное поле</div>
+                                <div *ngIf="f.email.errors.email">Не правильный формат email</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form_row">
+                        <div class="form-group">
+                            <label for="register-password" class="form-label">Пароль</label>
+
+                            <div class="input-group input-group-merge form-password-toggle">
+                                <input
+                                        [type]="passwordTextType ? 'text' : 'password'"
+                                        formControlName="password"
+                                        class="form-control form-control-merge"
+                                        placeholder="············"
+                                        aria-describedby="register-password"
+                                        tabindex="3"
+                                        [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
+                                />
+                                <div class="input-group-append">
                 <span class="input-group-text cursor-pointer"
                 ><i
                         class="feather font-small-4"
@@ -66,31 +173,31 @@
                         (click)="passwordTextType = !passwordTextType"
                 ></i
                 ></span>
+                                </div>
+                            </div>
+                            <div
+                                    *ngIf="submitted && f.password.errors"
+                                    class="invalid-feedback"
+                                    [ngClass]="{ 'd-block': submitted && f.password.errors }"
+                            >
+                                <div *ngIf="f.password.errors.required">Обязательное поле</div>
                             </div>
                         </div>
-                        <div
-                                *ngIf="submitted && f.password.errors"
-                                class="invalid-feedback"
-                                [ngClass]="{ 'd-block': submitted && f.password.errors }"
-                        >
-                            <div *ngIf="f.password.errors.required">Обязательное поле</div>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="register-c_password" class="form-label">Повторите пароль</label>
+                        <div class="form-group">
+                            <label for="register-c_password" class="form-label">Повторите пароль</label>
 
-                        <div class="input-group input-group-merge form-password-toggle">
-                            <input
-                                    [type]="cPasswordTextType ? 'text' : 'password'"
-                                    formControlName="c_password"
-                                    class="form-control form-control-merge"
-                                    placeholder="············"
-                                    aria-describedby="register-c_password"
-                                    tabindex="3"
-                                    [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
-                            />
-                            <div class="input-group-append">
+                            <div class="input-group input-group-merge form-password-toggle">
+                                <input
+                                        [type]="cPasswordTextType ? 'text' : 'password'"
+                                        formControlName="c_password"
+                                        class="form-control form-control-merge"
+                                        placeholder="············"
+                                        aria-describedby="register-c_password"
+                                        tabindex="3"
+                                        [ngClass]="{ 'is-invalid error': submitted && f.c_password.errors }"
+                                />
+                                <div class="input-group-append">
                 <span class="input-group-text cursor-pointer"
                 ><i
                         class="feather font-small-4"
@@ -101,16 +208,104 @@
                         (click)="cPasswordTextType = !cPasswordTextType"
                 ></i
                 ></span>
+                                </div>
+                            </div>
+                            <div
+                                    *ngIf="submitted && f.c_password.errors"
+                                    class="invalid-feedback"
+                                    [ngClass]="{ 'd-block': submitted && f.c_password.errors }"
+                            >
+                                <div *ngIf="f.c_password.errors.required">Обязательное поле</div>
                             </div>
                         </div>
-                        <div
-                                *ngIf="submitted && f.password.errors"
-                                class="invalid-feedback"
-                                [ngClass]="{ 'd-block': submitted && f.password.errors }"
-                        >
-                            <div *ngIf="f.password.errors.required">Обязательное поле</div>
+                    </div>
+
+                    <div class="sub_header">Паспортные данные</div>
+
+                    <div class="form_row">
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">Серия</label>
+                            <input
+                                    type="text"
+                                    formControlName="document_series"
+                                    class="form-control"
+                                    placeholder="XXXX"
+                                    aria-describedby="register-email"
+                                    tabindex="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f.document_series.errors }"
+                            />
+                            <div *ngIf="submitted && f.document_series.errors" class="invalid-feedback">
+                                <div *ngIf="f.document_series.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">Номер</label>
+                            <input
+                                    type="text"
+                                    formControlName="document_number"
+                                    class="form-control"
+                                    placeholder="XXXXXX"
+                                    aria-describedby="register-email"
+                                    tabindex="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f.document_number.errors }"
+                            />
+                            <div *ngIf="submitted && f.document_number.errors" class="invalid-feedback">
+                                <div *ngIf="f.document_number.errors.required">Обязательное поле</div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="register-email" class="form-label">Выдан</label>
+                        <input
+                                type="text"
+                                formControlName="document_issued"
+                                class="form-control"
+                                placeholder="Кем выдан"
+                                aria-describedby="register-email"
+                                tabindex="2"
+                                [ngClass]="{ 'is-invalid': submitted && f.document_issued.errors }"
+                        />
+                        <div *ngIf="submitted && f.document_issued.errors" class="invalid-feedback">
+                            <div *ngIf="f.document_issued.errors.required">Обязательное поле</div>
+                        </div>
+                    </div>
+
+                    <div class="form_row">
+                        <div class="form-group form-group__date">
+                            <label for="register-email" class="form-label">Дата выдачи</label>
+                            <input
+                                    type="date"
+                                    formControlName="document_issued_date"
+                                    class="form-control"
+                                    placeholder="Дата выдачи"
+                                    aria-describedby="register-email"
+                                    tabindex="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f.document_issued_date.errors }"
+                            />
+                            <div *ngIf="submitted && f.document_issued_date.errors" class="invalid-feedback">
+                                <div *ngIf="f.document_issued_date.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">Код подразделения</label>
+                            <input
+                                    type="text"
+                                    formControlName="document_department_code"
+                                    class="form-control"
+                                    placeholder="XXX-XXX"
+                                    aria-describedby="register-email"
+                                    tabindex="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f.document_department_code.errors }"
+                            />
+                            <div *ngIf="submitted && f.document_department_code.errors" class="invalid-feedback">
+                                <div *ngIf="f.document_department_code.errors.required">Обязательное поле</div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div *ngIf="isRequestFail"
                          class="invalid-feedback d-block request-err"
@@ -118,7 +313,7 @@
                         <div>Введены некорректные данные. Повторите попытку</div>
                     </div>
 
-                    <button class="btn btn-primary btn-block" tabindex="5" rippleEffect>Зарегистрироваться</button>
+                    <button class="btn btn-primary btn-block registration_btn" tabindex="5" rippleEffect>Зарегистрироваться</button>
                 </form>
 
                 <p class="text-center mt-2">
