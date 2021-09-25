@@ -20,8 +20,9 @@ export class ChildrenHomeCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(param => {
-      this.homeChildrenService.get(param['id'])
+    this.route.params.subscribe(params => {
+      this.homeChildrenService.setCurrentId(+params['id']);
+      this.homeChildrenService.get(params['id'])
           .subscribe(data => this.homeChildren = data);
     });
   }
