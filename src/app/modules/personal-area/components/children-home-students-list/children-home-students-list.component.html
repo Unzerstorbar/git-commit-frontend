@@ -5,25 +5,32 @@
     </div>
 
     <div class="service_panel flex_row ">
-        <button class="btn btn-primary ">+  Добавить воспитанника</button>
+        <button class="btn btn-primary"
+                (click)="isActiveCreateForm = !isActiveCreateForm">
+            +  Добавить воспитанника
+        </button>
+    </div>
+
+    <div *ngIf="isActiveCreateForm">
+        <ng-container *ngTemplateOutlet="create"></ng-container>
     </div>
 
     <div class="registry flex_column">
         <div class="student_row flex_row ecommerce-card card" *ngFor="let student of studentsList; let i = index">
-            <div class="flex_row">
+            <div>
                 <div class="student_row__logo">
                     <img src="favicon.ico" />
                 </div>
-                <div class="flex_column student_row__info">
-                    <div>{{student.name}}</div>
-                    <div>
-                        <span class="birthday">{{student.birthday}}</span>
-                        <span class="age">{{student.age}}</span>
-                    </div>
-                </div>
-                <div class="student_row__login">{{student.login}}</div>
-                <div class="student_row__email">{{student.email}}</div>
             </div>
+
+            <div class="student_row__base">
+                <div>{{student.name}}</div>
+                <div>
+                    <span class="birthday">{{student.birthday}}</span>
+                    <span class="age">{{student.age}}</span>
+                </div>
+            </div>
+                <div class="student_row__email">{{student.email}}</div>
             <div class="flex_row service_btn_row">
                 <button>Сменить пароль</button>
             </div>
@@ -32,3 +39,55 @@
 
     <div class="paginator"></div>
 </div>
+
+<ng-template #create>
+    <div class="create_form card earnings-card" [formGroup]="group">
+        <div class="create__field_name">
+            <label class="form-label">Имя</label>
+            <input class="form-control"
+                   tabindex="1"
+                   autofocus
+                   type="text"
+                   formControlName="name"
+            />
+        </div>
+        <div class="create__field_email">
+            <label class="form-label">Email</label>
+            <input class="form-control"
+                   tabindex="2"
+                   type="text"
+                   formControlName="email"
+            />
+        </div>
+        <div class="create__field_birthday">
+            <label class="form-label">Дата рождения</label>
+            <input class="form-control"
+                   tabindex="3"
+                   type="date"
+                   formControlName="birthday"
+            />
+        </div>
+        <div class="create__field_password">
+            <label class="form-label">Пароль</label>
+            <input class="form-control"
+                   tabindex="4"
+                   type="password"
+                   placeholder="·········"
+                   formControlName="password"
+            />
+        </div>
+        <div class="create__field_c_password">
+            <label class="form-label">Подтвердите пароль</label>
+            <input class="form-control"
+                   tabindex="5"
+                   type="password"
+                   placeholder="·········"
+                   formControlName="c_password"
+            />
+        </div>
+        <div>
+            <button class="btn btn-primary btn-block"
+            (click)="saveChildren()">+</button>
+        </div>
+    </div>
+</ng-template>

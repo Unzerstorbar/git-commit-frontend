@@ -7,8 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ContactPersonComponent implements OnInit {
   @Input() name: string;
-  @Input() phone: string;
-  @Input() email: string;
+  @Input() type: string;
+  @Input() contact: string;
+  @Input() role: string;
 
   constructor() { }
 

@@ -3,7 +3,9 @@ import {CrudService} from "../../../common/crud.service";
 import {HomeChildrenModel} from "../common/home-children.model";
 import {HttpClient} from "@angular/common/http";
 import {AuthenticationService} from "../../authentication/services/authentication.service";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {RegistryRowModel} from "../common/registry-row.model";
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +30,22 @@ export class HomeChildrenService extends CrudService<HomeChildrenModel>{
     this._currentId.next(id);
   }
 
-  getRegistry(){
+  getRegistry(id: number): Observable<RegistryRowModel[]> {
     const headers = this.auth.getAuthorizationHeaders();
     return this.http.get(`${this.baseUrl}/registry`, {headers})
+        .pipe(
+            map((dataList: any[]) => {
+              return dataList.find(row => row.id === id).pupils.map(pupil => new RegistryRowModel(pupil));
+            })
+        );
+  }
+
+  saveChildrenInHomeChildren(data: RegistryRowModel, childHomeId: number) {
+    const headers = this.auth.getAuthorizationHeaders();
+    return this.http.post(`${this.baseUrl}/${childHomeId}/pupil`, data, {headers})
+        .pipe(
+            map(status => ({success: true})),
+            catchError(() => [{success: false}])
+        );
   }
 }

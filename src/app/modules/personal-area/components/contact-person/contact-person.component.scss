@@ -10,5 +10,9 @@
     display: flex;
     flex-direction: column;
     @include setFont(12px, 15px, 400, normal, rgb(var(--color-text-sub-rgb)));
+
+    > div > span {
+      text-decoration: underline;
+    }
   }
 }

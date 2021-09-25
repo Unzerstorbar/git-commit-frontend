@@ -8,6 +8,7 @@ import { ContactPersonComponent } from './components/contact-person/contact-pers
 import { ChildrenHomeCardComponent } from './components/children-home-card/children-home-card.component';
 import { ChildrenHomeStudentsListComponent } from './components/children-home-students-list/children-home-students-list.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {CoreCommonModule} from "../../../@core/common.module";
 
 
 const routes: Routes = [
@@ -34,10 +35,11 @@ const routes: Routes = [
     ChildrenHomeCardComponent,
     ChildrenHomeStudentsListComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        CoreCommonModule,
+    ],
   bootstrap: [ChildrenHomeProfileComponent]
 })
 export class ProfileModule { }

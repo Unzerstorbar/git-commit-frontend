@@ -49,11 +49,10 @@
   width: 90%;
   > .student_row {
     margin: 5px 0;
+    justify-content: space-between;
+    align-items: center;
 
     > :first-child{
-      justify-content: space-between;
-      align-items: center;
-      width: 80%;
       padding: 8px 30px;
     }
 
@@ -104,4 +103,27 @@
   @include setFont(14px, 21px, 400);
   color: rgb(var(--color-btn-blue-rgb));
 
+}
+
+.create_form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  width: 90%;
+
+  > div {
+    margin: 0 5px;
+  }
+}
+
+.create__service_btn{
+  display: flex;
+  flex-direction: row;
+}
+
+.student_row__base{
+  text-align: center;
+  width: 30rem;
 }

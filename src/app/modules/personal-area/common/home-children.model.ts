@@ -12,13 +12,20 @@ type Contact = {
     contact: string;
 };
 
+type City = {
+    id: number;
+    name: string;
+};
+
 export class HomeChildrenModel {
     id: number;
     name: string;
     description: string;
     address: string;
+    city: City;
     pupils: Pupils[];
     contacts: Contact[];
+    requisites: []
 
 
     constructor(obj:HomeChildrenModel ) {
@@ -26,7 +33,9 @@ export class HomeChildrenModel {
         this.name = obj.name;
         this.description = obj.description;
         this.address = obj.address;
+        this.city = obj.city;
         this.pupils = obj.pupils || [];
         this.contacts = obj.contacts || [];
+        this.requisites = obj.requisites || [];
     }
 }
