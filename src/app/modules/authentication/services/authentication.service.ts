@@ -60,6 +60,8 @@ export class AuthenticationService {
   }
 
   registration(data: {name: string, email: string, password: string, c_password: string}) {
+      data['name'] = 's'
+      data['role'] = { id: data['role'] }
       return this.http.post(`${environment.apiUrl}/auth/register`, data)
           .pipe(
             map(res => ({success: true})),
