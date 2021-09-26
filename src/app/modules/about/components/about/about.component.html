@@ -1,27 +1,68 @@
-<div class="flex_column">
-
-    <div class="flex_row about__title">
-        <h2>О проекте</h2>
-        <div>
-            <button class="btn btn-outline-primary">Войти</button>
-            <button class="btn btn-primary">Авторизация</button>
-        </div>
-    </div>
-
+<div class="flex_column card earnings-card about">
     <div class="about_info flex_row">
-        <div class="about_info__content flex_column">
-            <div>
+        <div>
+            <div class="about_info_block">
+                <div>
+                    <h2>О проекте</h2>
+                </div>
+                <div>
+                    Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44
+                </div>
             </div>
-            <div>Content</div>
 
+
+            <div class="about_info_block">
+                <div>
+                    <h2>Наша миссия</h2>
+                </div>
+                <div>
+                    Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом №44Детский дом
+                </div>
+            </div>
+
+            <div class="flex_row about_statistic">
+                <div class="block_statistic">
+                    <h1>12333</h1>
+                    <div>Детский дом №44Детский</div>
+                </div>
+                <div class="block_statistic">
+                    <h1>12333</h1>
+                    <div>Детский дом №44Детский</div>
+                </div>
+                <div class="block_statistic">
+                    <h1>12333</h1>
+                    <div>Детский дом №44Детский</div>
+                </div>
+            </div>
         </div>
 
         <div class="about_info_slider flex_column">
+            <div class="auth_block">
+                <button class="btn btn-outline-primary">Войти</button>
+                <button class="btn btn-primary">Зарегистрироваться</button>
+            </div>
             <div></div>
         </div>
     </div>
 
-    <div class="about_map flex_row"></div>
+
+    <div class="flex_row slider_row">
+        <ngb-carousel [interval]="2000">
+            <ng-container *ngFor="let slide of sliderItemsList">
+                <ng-template ngbSlide>
+                    <div class="carousel-img-wrapper">
+                        <img [src]="slide.src" class="img-fluid slide_img" [alt]="slide.alt" />
+                    </div>
+                    <div class="carousel-caption"></div>
+                </ng-template>
+            </ng-container>
+        </ngb-carousel>
+    </div>
+
+    <div class="about_map">
+        <h2>Карта</h2>
+        <img src="assets/images/map_tmp.png"/>
+    </div>
 
 
 </div>
