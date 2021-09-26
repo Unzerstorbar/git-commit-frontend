@@ -1,27 +1,73 @@
-# Angular Admin Template
+<h4>Реализованная функциональность:</h4>
+<ul>
+    <li>Авторизация, регистрация;</li>
+    <li>Формирование реестра воспитанников;</li>
+    <li>Создание мероприятий для воспитанников детских домов;</li>
+    <li>Ведение профиля, учёт активности пользователя (принятие участия в различных мероприятиях в роли волонтёра);</li>
+</ul> 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+<h4>Основной стек технологий:</h4>
+<ul>
+	<li>PHP 8, MySQL.</li>
+	<li>Laravel.</li>
+	<li>Babel.</li>
+	<li>Angular.</li>
+	<li>Git.</li>
+	<li>Gitlab.</li>
 
-## Development server
+ </ul>
+<h4>Демо</h4>
+<p>Демо сервиса доступно по адресу: <b>http://lupsor.ru/</b></p>
+<p>Реквизиты тестового пользователя: E-mail: <b>test@lupsor.ru</b>, пароль: <b>admin</b></p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4222/`. The app will automatically reload if you change any of the source files.
+СРЕДА ЗАПУСКА
+------------
+1) Развертывание сервиса производится на Ubuntu (Ubuntu 18.02);
+2) Требуется установленный Docker
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+УСТАНОВКА
+------------
+### Установка пакета "git-commit-backend"
 
-## Build
+Выполните
+~~~
+git clone https://github.com/Unzerstorbar/git-commit-backend.git
+cd git-commit-backend
+docker-compose up -d
+...
+~~~
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+После перейдите по ссылке http: http://localhost/
 
-## Running unit tests
+### База данных
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Необходимо создать пустую базу данных, а подключение к базе прописать в конфигурационный файл **.env** в корневом каталоге проекта
 
-## Running end-to-end tests
+### Выполнение миграций
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Для заполнения базы данных системной информацией выполните в корневой папке сервиса:
+~~~
+php artisan migrate 
+~~~
 
-## Further help
+### Установка зависимостей проекта
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Установка зависимостей осуществляется с помощью [Composer](http://getcomposer.org/). Если у вас его нет вы можете установить его по инструкции
+на [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
+
+После этого выполнить команду в директории проекта:
+
+~~~
+composer install
+~~~
+
+РАЗРАБОТЧИКИ
+
+<h4>Шаманин Алексей Backend https://t.me/alexowen </h4>
+<h4>Куплинов Александр Backend https://vk.com/anydream_music </h4>
+<h4>Бойцов Андрей Frontend https://t.me/SamLeto </h4>
+<h4>Белов Евгений Frontend https://vk.com/id58014386 </h4>
+<h4>Любшин Алексей https://t.me/Rnd000 </h4>
+
+
