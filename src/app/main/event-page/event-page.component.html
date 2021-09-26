@@ -1,171 +1,230 @@
-<div class="content-wrapper container-xxl p-0">
-    <div class="content-body">
-        <div class="card">
-            <div style="display: flex; flex-wrap: wrap">
-                <div class="item-img">
-                    <a href="" style="position: relative; flex-wrap: wrap">
-                        <ng-container [ngSwitch]="data.event_status.id">
-                            <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
-                            <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
-                            <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="name3"></ng-container>
-                            <ng-container *ngSwitchCase="4" [ngTemplateOutlet]="name4"></ng-container>
-                            <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
-                            <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
-                        </ng-container>
-                        <img style="width: 194px; height: 264px" [src]="data.image.name" [alt]="data.image.name">
-                    </a>
-                </div>
-                <div class="card-body desc-body">
-                    <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
-                        <div class="data-event font-weight-bolder"><!--22 октября-->{{data.date}}</div>
-                        <div *ngFor="let topic of data.topic" class="chips text-info">{{topic.name}}</div>
-                    </div>
-                    <h1 class="title">{{data.name}}</h1>
-                    <div class="description">
-                        <p>{{data.description}}</p>
-                    </div>
-                </div>
 
-                <div class="item-options right-border">
-                    <button class="btn-danger button-action">Отменить участие</button>
-                </div>
-            </div>
-            <div style="display: flex; margin: 20px; flex-wrap: wrap; grid-gap: 50px;">
-                <div>
-                    <div style="margin: 20px 0">Организаторы</div>
-                    <div style="display: flex; align-items: center">
-                        <span style="margin-right: 10px; font-weight: 500">{{data.organizers}}</span> <div class="avatar-group">
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-5.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-7.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-10.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-8.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-20.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                            </div> <span class="text-primary" style="margin: 5px">еще +{{data.organizers - 5}}</span>
-                    </div>
-                </div>
-                <div>
-                    <div style="margin: 20px 0">Участники</div>
-                    <div style="display: flex; align-items: center">
-                        <span style="margin-right: 10px; font-weight: 500">{{data.participants}}</span>
-                        <div class="avatar-group">
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-5.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-7.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-10.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-8.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                                <div class="avatar pull-up">
-                                    <img
-                                            class="media-object"
-                                            src="assets/images/portrait/small/avatar-s-20.jpg"
-                                            alt="Avatar"
-                                            height="32"
-                                            width="32"
-                                    />
-                                </div>
-                            </div> <span class="text-primary" style="margin: 5px">еще +{{data.participants - 5}}</span>
-                    </div>
-                </div>
-            </div>
-            <div style="height: 234px; width: 350px; margin: 20px">
-                <div style="padding-bottom: 8px">Место проведения</div>
-                <google-map height="234px" width="350px" style=" "></google-map>
-            </div>
-            <div style="padding: 20px" class="col-md-10 col-sm-12">
-                <section id="basic-carousel">
-                    <div class="row">
-                        <div class="col-md-9 col-sm-12">
-                            <h4 class="card-title">Галерея</h4>
-                            <div style="padding: 0" class="card-body">
-                                <ngb-carousel *ngIf="carouselImages">
-                                    <ng-template *ngFor="let image of carouselImages" ngbSlide>
-                                        <div class="carousel-img-wrapper">
-                                            <img [src]="image" class="img-fluid" alt="Random first slide" />
-                                        </div>
-                                        <div class="carousel-caption"></div>
-                                    </ng-template>
-                                </ngb-carousel>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
 <ng-template #name1><div class="status bg-info bg-gradient-darken2">{{data.event_status.name}}</div></ng-template>
 <ng-template #name2><div class="status bg-gradient-success">{{data.event_status.name}}</div></ng-template>
 <ng-template #name3><div class="status bg-danger bg-gradient-lighten-2">{{data.event_status.name}}</div></ng-template>
 <ng-template #name4><div class="status bg-danger bg-gradient-lighten-2">{{data.event_status.name}}</div></ng-template>
 <ng-template #name5><div class="status bg-gradient-warning">{{data.event_status.name}}</div></ng-template>
 <ng-template #name6><div class="status bg-gradient-warning">{{data.event_status.name}}</div></ng-template>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <section class="invoice-preview-wrapper">
+            <div class="row invoice-preview">
+                <!-- Invoice -->
+                <div class="col-xl-9 col-md-8 col-12 printRef">
+                    <div class="card invoice-preview-card">
+                        <div class="card-body invoice-padding pb-0">
+                            <!-- Header Starts -->
+                            <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
+                                <div>
+                                    <div class="logo-wrapper">
+
+                                        <div class="card-body desc-body">
+                                            <div style="display: flex; align-items: center; grid-gap: 12px; flex-wrap: wrap">
+                                                <div *ngFor="let topic of data?.topic" class="chips text-info">{{topic?.name}}</div>
+                                            </div>
+                                            <h1 class="title">{{data?.name}}</h1>
+                                            <div class="description">
+                                                <p>{{data?.description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-md-0 mt-2">
+                                    <h4 class="invoice-title">
+                                        <div class="data-event font-weight-bolder"><!--22 октября-->{{data?.date}}</div>
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- Header Ends -->
+                        </div>
+
+                        <hr class="invoice-spacing" />
+
+                        <div class="card-body invoice-padding pt-0" style="margin: 40px;">
+                            <div class="row invoice-spacing">
+                                <div class="col-xl-8 p-0">
+                                    <h6 class="mb-2" style="margin: 20px 0">Организаторы</h6>
+                                    <div style="display: flex; align-items: center">
+                                        <span style="margin-right: 10px; font-weight: 500">{{data?.organizers}}</span> <div class="avatar-group">
+                                        <div class="avatar pull-up">
+                                            <img
+                                                    class="media-object"
+                                                    src="assets/images/portrait/small/avatar-s-5.jpg"
+                                                    alt="Avatar"
+                                                    height="32"
+                                                    width="32"
+                                            />
+                                        </div>
+                                        <div class="avatar pull-up">
+                                            <img
+                                                    class="media-object"
+                                                    src="assets/images/portrait/small/avatar-s-7.jpg"
+                                                    alt="Avatar"
+                                                    height="32"
+                                                    width="32"
+                                            />
+                                        </div>
+                                        <div class="avatar pull-up">
+                                            <img
+                                                    class="media-object"
+                                                    src="assets/images/portrait/small/avatar-s-10.jpg"
+                                                    alt="Avatar"
+                                                    height="32"
+                                                    width="32"
+                                            />
+                                        </div>
+                                        <div class="avatar pull-up">
+                                            <img
+                                                    class="media-object"
+                                                    src="assets/images/portrait/small/avatar-s-8.jpg"
+                                                    alt="Avatar"
+                                                    height="32"
+                                                    width="32"
+                                            />
+                                        </div>
+                                        <div class="avatar pull-up">
+                                            <img
+                                                    class="media-object"
+                                                    src="assets/images/portrait/small/avatar-s-20.jpg"
+                                                    alt="Avatar"
+                                                    height="32"
+                                                    width="32"
+                                            />
+                                        </div>
+                                    </div> <span class="text-primary" style="margin: 5px">еще +{{data?.organizers - 5}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 p-0 mt-xl-0 mt-2">
+                                    <h6 class="mb-2" style="margin: 20px 0">Участники</h6>
+                                    <div style="display: flex; align-items: center">
+                                        <span style="margin-right: 10px; font-weight: 500">{{data?.participants}}</span>
+                                        <div class="avatar-group">
+                                            <div class="avatar pull-up">
+                                                <img
+                                                        class="media-object"
+                                                        src="assets/images/portrait/small/avatar-s-5.jpg"
+                                                        alt="Avatar"
+                                                        height="32"
+                                                        width="32"
+                                                />
+                                            </div>
+                                            <div class="avatar pull-up">
+                                                <img
+                                                        class="media-object"
+                                                        src="assets/images/portrait/small/avatar-s-7.jpg"
+                                                        alt="Avatar"
+                                                        height="32"
+                                                        width="32"
+                                                />
+                                            </div>
+                                            <div class="avatar pull-up">
+                                                <img
+                                                        class="media-object"
+                                                        src="assets/images/portrait/small/avatar-s-10.jpg"
+                                                        alt="Avatar"
+                                                        height="32"
+                                                        width="32"
+                                                />
+                                            </div>
+                                            <div class="avatar pull-up">
+                                                <img
+                                                        class="media-object"
+                                                        src="assets/images/portrait/small/avatar-s-8.jpg"
+                                                        alt="Avatar"
+                                                        height="32"
+                                                        width="32"
+                                                />
+                                            </div>
+                                            <div class="avatar pull-up">
+                                                <img
+                                                        class="media-object"
+                                                        src="assets/images/portrait/small/avatar-s-20.jpg"
+                                                        alt="Avatar"
+                                                        height="32"
+                                                        width="32"
+                                                />
+                                            </div>
+                                        </div> <span class="text-primary" style="margin: 5px">еще +{{data?.participants - 5}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="invoice-spacing" />
+
+                        <div class="card-body invoice-padding pt-0" style="margin: 40px;">
+                            <google-map height="400px" width="'100%'"></google-map>
+                        </div>
+
+                        <hr class="invoice-spacing" />
+
+                        <section id="component-swiper-autoplay">
+                            <div class="card-body">
+                                <swiper class="swiper-autoplay swiper-container" [config]="swiperAutoplay">
+    <!--                                <img class="img-fluid" src="https://sun9-24.userapi.com/impg/CvFW1q2_ntcq5Svg0bMGtRh01I7RCBYcJr550w/XhyoMfHT__k.jpg?size=443x500&quality=96&sign=ca11414c64699081e9fae8912749803e&type=album" alt="banner" />-->
+    <!--                                <img class="img-fluid" src="https://sun9-24.userapi.com/impg/CvFW1q2_ntcq5Svg0bMGtRh01I7RCBYcJr550w/XhyoMfHT__k.jpg?size=443x500&quality=96&sign=ca11414c64699081e9fae8912749803e&type=album" alt="banner" />-->
+    <!--                                <img class="img-fluid" src="https://sun9-24.userapi.com/impg/CvFW1q2_ntcq5Svg0bMGtRh01I7RCBYcJr550w/XhyoMfHT__k.jpg?size=443x500&quality=96&sign=ca11414c64699081e9fae8912749803e&type=album" alt="banner" />-->
+    <!--                                <img class="img-fluid" src="https://sun9-24.userapi.com/impg/CvFW1q2_ntcq5Svg0bMGtRh01I7RCBYcJr550w/XhyoMfHT__k.jpg?size=443x500&quality=96&sign=ca11414c64699081e9fae8912749803e&type=album" alt="banner" />-->
+                                    <img class="img-fluid" src="assets/images/banner/banner-7.jpg" alt="banner" />
+                                    <img class="img-fluid" src="assets/images/banner/banner-8.jpg" alt="banner" />
+                                    <img class="img-fluid" src="assets/images/banner/banner-9.jpg" alt="banner" />
+                                    <img class="img-fluid" src="assets/images/banner/banner-10.jpg" alt="banner" />
+                                    <img class="img-fluid" src="assets/images/banner/banner-11.jpg" alt="banner" />
+                                </swiper>
+                            </div>
+                        </section>
+
+                        <hr class="invoice-spacing" />
+                    </div>
+                </div>
+                <!--/ Invoice -->
+
+                <div class="col-xl-3 col-md-4 col-12 invoice-actions mt-md-0 mt-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="item-img">
+                                <a href="" style="position: relative; flex-wrap: wrap">
+                                    <ng-container [ngSwitch]="data?.event_status.id">
+                                        <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="name1"></ng-container>
+                                        <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="name2"></ng-container>
+                                        <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="name3"></ng-container>
+                                        <ng-container *ngSwitchCase="4" [ngTemplateOutlet]="name4"></ng-container>
+                                        <ng-container *ngSwitchCase="5" [ngTemplateOutlet]="name5"></ng-container>
+                                        <ng-container *ngSwitchCase="6" [ngTemplateOutlet]="name6"></ng-container>
+                                    </ng-container>
+                                    <img style="width: 194px; height: 264px" [src]="data?.image.name" [alt]="data?.image.name">
+                                </a>
+                            </div>
+
+                            <div class="item-options right-border">
+                                <button class="btn-danger button-action">Отменить участие</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Send Invoice Sidebar -->
+    <core-sidebar
+            class="modal modal-slide-in sidebar-todo-modal fade"
+            name="invoice-sidebar"
+            overlayClass="modal-backdrop"
+            hideOnEsc="true"
+    >
+<!--        <app-send-invoice-sidebar-preview></app-send-invoice-sidebar-preview>-->
+    </core-sidebar>
+    <!--/  Send Invoice Sidebar -->
+
+    <!-- Add Payment Sidebar -->
+    <core-sidebar
+            class="modal modal-slide-in sidebar-todo-modal fade"
+            name="add-payment-sidebar"
+            overlayClass="modal-backdrop"
+            hideOnEsc="true"
+    >
+<!--        <app-add-payment-sidebar-preview></app-add-payment-sidebar-preview>-->
+    </core-sidebar>
+    <!--/  Add Payment Sidebar -->
+</div>

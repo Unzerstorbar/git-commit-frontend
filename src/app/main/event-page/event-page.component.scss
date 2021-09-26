@@ -2,6 +2,7 @@
 @import '@core/scss/angular/libs/form-wizard.component.scss';
 @import '@core/scss/base/plugins/forms/form-validation.scss';
 @import '@core/scss/angular/libs/ratings.component.scss';
+@import '@core/scss/angular/libs/swiper.component.scss';
 
 .ecommerce-card {
   flex-wrap: wrap;
@@ -45,7 +46,7 @@
 .right-border {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: center;
   padding: 20px;
 }
 
@@ -111,5 +112,6 @@
 }
 
 .item-img {
-  align-self: flex-start;
+  margin: auto;
+  width: fit-content;
 }

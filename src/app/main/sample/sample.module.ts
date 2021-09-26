@@ -23,6 +23,8 @@ import {AuthGuard} from "../../common/auth.guard";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CoreSidebarModule} from "../../../@core/components";
+import {SwiperModule} from "ngx-swiper-wrapper";
 
 const routes: Routes = [
     {
@@ -89,8 +91,10 @@ const routes: Routes = [
         CardSnippetModule,
         FormsModule,
         ReactiveFormsModule,
-        GoogleMapsModule
+        GoogleMapsModule,
+        CoreSidebarModule,
+        SwiperModule
     ],
-  exports: [SampleComponent, HomeComponent]
+  exports: [SampleComponent, HomeComponent],
 })
 export class SampleModule {}
