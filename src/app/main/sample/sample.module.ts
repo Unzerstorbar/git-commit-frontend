@@ -17,10 +17,12 @@ import {MomentPipe} from "../../../@core/pipes/moment.pipe";
 import {EventPageComponent} from "../event-page/event-page.component";
 import {CardSnippetModule} from "../../../@core/components/card-snippet/card-snippet.module";
 import {GoogleMapsModule} from "@angular/google-maps";
-import {EventsListComponent} from "../events-list/events-list.component";
 import {EventEditorComponent} from "../event-editor/event-editor.component";
 import {FaqComponent} from "../faq/faq.component";
 import {AuthGuard} from "../../common/auth.guard";
+import {NgSelectModule} from "@ng-select/ng-select";
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
     {
@@ -29,32 +31,26 @@ const routes: Routes = [
         data: { animation: 'sample' },
         canActivate: [AuthGuard]
     },
-  {
-    path: 'events',
+    {
+    path: 'event/list',
     component: EventsComponent,
       canActivate: [AuthGuard],
       children: [
       {
-          path: 'event/:id',
+          path: 'events/:id',
           redirectTo: '/event/:id',
       }
     ],
-  },
-  {
+    },
+    {
     path: 'event/:id',
     component: EventPageComponent,
     data: { animation: 'sample' },
       canActivate: [AuthGuard]
-  },
+    },
     {
         path: 'event/edit/;id',
         component: EventEditorComponent,
-        data: { animation: 'sample' },
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'event/list',
-        component: EventsListComponent,
         data: { animation: 'sample' },
         canActivate: [AuthGuard]
     },
@@ -86,9 +82,13 @@ const routes: Routes = [
         ContentHeaderModule,
         TranslateModule,
         CoreCommonModule,
+        CommonModule,
         NgbModule,
+        NgSelectModule,
         CoreTouchspinModule,
         CardSnippetModule,
+        FormsModule,
+        ReactiveFormsModule,
         GoogleMapsModule
     ],
   exports: [SampleComponent, HomeComponent]

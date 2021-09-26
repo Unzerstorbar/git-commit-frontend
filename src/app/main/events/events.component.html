@@ -6,8 +6,8 @@
             <li ngbNavItem>
                 <a ngbNavLink>Список</a>
                     <ng-template ngbNavContent>
-                        <p>
-                        <app-plate-event *ngFor="let event of eventList" [eventItem]="event"></app-plate-event>
+                        <p *ngFor="let event of eventList">
+                            <app-plate-event  [eventItem]="event"></app-plate-event>
         <!--                <app-plate-event></app-plate-event>-->
         <!--                <app-plate-event></app-plate-event>-->
                         </p>
@@ -45,6 +45,7 @@
             <i data-feather='plus'></i> Добавить мероприятие
         </button>
         </div>
+        <form [formGroup]="newEvent">
         <div class="card event-plate" *ngIf="addEvent">
         <!--<div style="width: 194px; align-self: center; height: 264px">-->
         <!--    -->
@@ -69,6 +70,7 @@
                                 <div class="input-group">
                                     <input
                                             class="form-control"
+                                            formControlName="date"
                                             placeholder="yyyy-mm-dd"
                                             name="Basic Date Picker"
                                             ngbDatepicker
@@ -86,43 +88,52 @@
                             </div>
                         </form>
                     </div>
-                    <div class="chips text-info">+</div>
+<!--                    <div class="chips text-info">+</div>-->
                 </div>
                 <h1 class="title">
-                    <input type="text" class="form-control form-control-sm"></h1>
+                    <input type="text"
+                           formControlName="title"
+                           class="form-control form-control-sm"></h1>
                 <div class="description">
-                    <textarea style="width: 100%" class="form-control" maxlength="2" rows="1"></textarea>
+                    <textarea style="width: 100%"
+                              formControlName="description"
+                              class="form-control"
+                              maxlength="255"
+                              rows="1"></textarea>
                 </div>
                 <div style="display: flex; margin-top: 10px; grid-gap: 10px">
                     <button (click)="addEvent=false" class="btn-outline-danger button-action">Отменить</button>
-                    <button class="btn-primary button-action">Запустить</button>
+                    <button style="margin-left: 10px" (click)="addNewEvent()" class="btn-primary button-action">Запустить</button>
                 </div>
             </div>
             <div class="right-border">
                 <div class="party-info">
                     <span>Участники</span>
-                    <input type="text" class="form-control form-control-sm">
+                    <input type="text"
+                           formControlName="participants"
+                           class="form-control form-control-sm">
                 </div>
                 <div class="party-info">
                     <span>Волонтеры</span>
-                    <input type="text" class="form-control form-control-sm">/
-                    <input type="text" class="form-control form-control-sm">
+                    <input type="text" [formControlName]="'volunteers'" class="form-control form-control-sm">/
+                    <input type="text" [formControlName]="'volunteersNeed'" class="form-control form-control-sm">
                 </div>
                 <div class="party-info">
                     <span>Собрано средств</span>
-                    <input style="width: 72px" type="text" class="form-control form-control-sm">/
-                    <input style="width: 72px" type="text" class="form-control form-control-sm">
+                    <input style="width: 72px" type="text" [formControlName]="'fundsAmount'" class="form-control form-control-sm">/
+                    <input style="width: 72px" type="text" [formControlName]="'fundsAmountNeed'" class="form-control form-control-sm">
                 </div>
                 <div style="width: 100%; margin-bottom: auto">
                     <ngb-progressbar showValue="true" type="success" [value]="0"></ngb-progressbar>
                 </div>
                 <button class="avatar bg-light-secondary"><i data-feather='mail'></i>Чат</button>
                 <div style="display: flex; grid-gap: 8px">
-                    <button class="btn-outline-secondary button-action">Перейти</button>
+<!--                    <button class="btn-outline-secondary button-action">Перейти</button>-->
                 </div>
             </div>
         </div>
+        </form>
 
-        <div [ngbNavOutlet]="nav" class="mt-1"></div>
+        <div [ngbNavOutlet]="nav" style="overflow: auto" class="mt-1"></div>
     </div>
 </div>

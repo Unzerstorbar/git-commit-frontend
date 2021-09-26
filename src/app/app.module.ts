@@ -20,7 +20,7 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { AuthenticationModule } from "./modules/authentication/authentication.module";
 import {AuthGuard} from "./common/auth.guard";
-import { EventsListComponent } from './main/events-list/events-list.component';
+import { ProfileComponent } from './main/profile/profile.component';
 import { EventEditorComponent } from './main/event-editor/event-editor.component';
 import { FaqComponent } from './main/faq/faq.component';
 import {AboutComponent} from "./modules/about/components/about/about.component";
@@ -65,7 +65,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
       AppComponent,
-      EventsListComponent,
+      ProfileComponent,
       EventEditorComponent,
       AboutComponent,
       FaqComponent,
