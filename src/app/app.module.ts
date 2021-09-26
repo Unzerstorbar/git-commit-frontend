@@ -23,6 +23,7 @@ import {AuthGuard} from "./common/auth.guard";
 import { ProfileComponent } from './main/profile/profile.component';
 import { EventEditorComponent } from './main/event-editor/event-editor.component';
 import { FaqComponent } from './main/faq/faq.component';
+import {SwiperModule} from "swiper/angular";
 import {AboutComponent} from "./modules/about/components/about/about.component";
 
 const appRoutes: Routes = [
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     LayoutModule,
     SampleModule,
     AuthenticationModule,
+    SwiperModule
   ],
   bootstrap: [AppComponent]
 })
