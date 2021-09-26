@@ -49,17 +49,19 @@
                                             </div>
                                         </div>
 
-                                        <form class="validate-form mt-2" (ngSubmit)="updatePartData('general')">
+                                        <form *ngIf="data?.general"
+                                              class="validate-form mt-2"
+                                              (ngSubmit)="updatePartData('general')">
                                             <div class="row">
                                                 <div class="col-12 col-sm-4">
                                                     <div class="form-group">
                                                         <label for="second-name">Фамилия</label>
                                                         <input
                                                                 type="text"
-                                                                [(ngModel)]="data?.general.second_name"
+                                                                [(ngModel)]="data.general.second_name"
                                                                 class="form-control"
                                                                 id="second-name"
-                                                                name="name"
+                                                                name="second-name"
                                                                 placeholder="Фамилия"
                                                         />
                                                     </div>
@@ -69,10 +71,10 @@
                                                         <label for="first-name">Имя</label>
                                                         <input
                                                                 type="text"
-                                                                [(ngModel)]="data?.general.first_name"
+                                                                [(ngModel)]="data.general.first_name"
                                                                 class="form-control"
                                                                 id="first-name"
-                                                                name="name"
+                                                                name="first-name"
                                                                 placeholder="Имя"
                                                         />
                                                     </div>
@@ -82,10 +84,10 @@
                                                         <label for="last-name">Отчество</label>
                                                         <input
                                                                 type="text"
-                                                                [(ngModel)]="data?.general.last_name"
+                                                                [(ngModel)]="data.general.last_name"
                                                                 class="form-control"
                                                                 id="last-name"
-                                                                name="name"
+                                                                name="last-name"
                                                                 placeholder="Отчество"
                                                         />
                                                     </div>
@@ -94,12 +96,12 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12">
                                                     <div class="form-group">
-                                                        <label for="account-e-mail">E-mail</label>
+                                                        <label for="email">E-mail</label>
                                                         <input
                                                                 type="email"
                                                                 [(ngModel)]="data?.general.email"
                                                                 class="form-control"
-                                                                id="account-e-mail"
+                                                                id="email"
                                                                 name="email"
                                                                 placeholder="Email"
                                                         />
@@ -137,14 +139,14 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="account-old-password">Старый пароль</label>
+                                                        <label for="old-password">Старый пароль</label>
                                                         <div class="input-group form-password-toggle input-group-merge">
                                                             <input
                                                                     [type]="passwordTextTypeOld ? 'text' : 'password'"
                                                                     class="form-control"
                                                                     formControlName="old_password"
                                                                     id="old-password"
-                                                                    name="password"
+                                                                    name="old_password"
                                                                     placeholder="Старый пароль"
                                                             />
                                                             <div class="input-group-append">
@@ -241,15 +243,17 @@
                             <ng-template ngbNavContent>
                                 <div class="card">
                                     <div class="card-body">
-                                        <form class="validate-form" (ngSubmit)="updatePartData('about')">
+                                        <form *ngIf="data?.about"
+                                              class="validate-form"
+                                              (ngSubmit)="updatePartData('about')">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="accountTextarea">О себе</label>
-                                                        <textarea [(ngModel)]="data?.about.about"
+                                                        <label for="about">О себе</label>
+                                                        <textarea [(ngModel)]="data.about.about"
                                                                   class="form-control"
-                                                                  id="accountTextarea"
-                                                                  name="accountTextarea"
+                                                                  id="about"
+                                                                  name="about"
                                                                   rows="4"
                                                                   placeholder="Информация о себе">
 
@@ -258,23 +262,23 @@
                                                 </div>
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="account-birth-date">Дата рождения</label>
+                                                        <label for="birthday">Дата рождения</label>
                                                         <input type="date"
-                                                               [(ngModel)]="data?.about.birthday"
-                                                               id="account-birth-date"
+                                                               [(ngModel)]="data.about.birthday"
+                                                               id="birthday"
                                                                class="form-control"
-                                                               name="account-birth-date"
+                                                               name="birthday"
                                                                placeholder="Дата рождения"
                                                         />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="account-phone">Телефон</label>
+                                                        <label for="phone">Телефон</label>
                                                         <input type="text"
-                                                               [(ngModel)]="data?.about.phone"
+                                                               [(ngModel)]="data.about.phone"
                                                                class="form-control"
-                                                               id="account-phone"
+                                                               id="phone"
                                                                placeholder="Номер телефона"
                                                                name="phone"
                                                         />

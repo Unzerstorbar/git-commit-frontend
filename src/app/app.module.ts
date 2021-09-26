@@ -22,8 +22,8 @@ import { AuthenticationModule } from "./modules/authentication/authentication.mo
 import {AuthGuard} from "./common/auth.guard";
 import { EventsListComponent } from './main/events-list/events-list.component';
 import { EventEditorComponent } from './main/event-editor/event-editor.component';
-import { AboutComponent } from './main/about/about.component';
 import { FaqComponent } from './main/faq/faq.component';
+import {AboutComponent} from "./modules/about/components/about/about.component";
 
 const appRoutes: Routes = [
   {
@@ -51,6 +51,10 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: 'about-us',
+    component: AboutComponent
   },
   {
     path: '**',

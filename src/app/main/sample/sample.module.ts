@@ -17,21 +17,12 @@ import {MomentPipe} from "../../../@core/pipes/moment.pipe";
 import {EventPageComponent} from "../event-page/event-page.component";
 import {CardSnippetModule} from "../../../@core/components/card-snippet/card-snippet.module";
 import {GoogleMapsModule} from "@angular/google-maps";
-import {ProfileComponent} from "../profile/profile.component";
-import {ProfileEditorComponent} from "../../modules/profile/components/profile-editor/profile-editor.component";
 import {EventsListComponent} from "../events-list/events-list.component";
 import {EventEditorComponent} from "../event-editor/event-editor.component";
-import {AboutComponent} from "../about/about.component";
 import {FaqComponent} from "../faq/faq.component";
 import {AuthGuard} from "../../common/auth.guard";
 
 const routes: Routes = [
-    {
-        path: 'about-us',
-        component: AboutComponent,
-        data: { animation: 'sample' },
-        canActivate: [AuthGuard]
-    },
     {
         path: 'faq',
         component: FaqComponent,

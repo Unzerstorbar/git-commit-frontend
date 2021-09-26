@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Subject} from "rxjs";
-import {FlatpickrOptions} from "ng2-flatpickr";
 import {UserService} from "../../services/user.service";
 import {ProfileSetting} from "../../common/profile-setting.model";
 import {ActivatedRoute} from "@angular/router";
@@ -61,6 +60,7 @@ export class ProfileEditorComponent implements OnInit {
       const id = +params['id'];
       this.id = id;
       this.userService.get(id).subscribe(data => {
+        console.log(data);
         this.data = data
       });
     });

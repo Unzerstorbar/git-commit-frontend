@@ -1,0 +1,21 @@
+@import '@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
+@import '@core/scss/base/pages/page-auth.scss';
+@import "src/assets/scss/variables/color";
+@import "src/assets/scss/mixins/font";
+
+.about__title{
+  justify-content: space-between;
+  > div > button {
+    margin: 0 5px;
+  }
+}
+
+.flex_row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex_column{
+  display: flex;
+  flex-direction: column;
+}
