@@ -14,6 +14,8 @@ export class ChildrenHomeCardComponent implements OnInit {
 
   homeChildren: HomeChildrenModel = {} as HomeChildrenModel;
 
+  interesList = [];
+
   constructor(
       private homeChildrenService: HomeChildrenService,
       private route: ActivatedRoute
@@ -25,6 +27,21 @@ export class ChildrenHomeCardComponent implements OnInit {
       this.homeChildrenService.get(params['id'])
           .subscribe(data => this.homeChildren = data);
     });
+
+    this.interesList = this.homeChildrenService.getInteresList();
+  }
+
+  getEventsGroup(){
+    const events = {}
+    for(let interes of this.interesList) {
+      if (events[interes.eventId]) {
+        events[interes.eventId].countUser += 1;
+      } else {
+        events[interes.eventId] = {...interes, countUser: 2};
+      }
+    }
+    console.log(events);
+    return Object.values(events);
   }
 
 }

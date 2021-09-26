@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public toggleMenu = true;
   public loadMoreRef = false;
 
+  likes = [];
+
   private _unsubscribeAll: Subject<any>;
 
   constructor(
@@ -35,6 +37,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.likes = this.profileService.getLikes();
     this.router.params.subscribe(params => {
       const id = +params['id'];
       this.profileService.get(id).subscribe(data => {

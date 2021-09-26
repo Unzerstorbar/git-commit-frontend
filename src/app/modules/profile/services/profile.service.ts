@@ -17,4 +17,8 @@ export class ProfileService extends CrudService<ProfileModel>{
         map(data => new ProfileModel(data as ProfileModel))
     );
   }
+
+  getLikes(){
+    return JSON.parse(localStorage.getItem('likes')) || [];
+  }
 }

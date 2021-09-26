@@ -84,5 +84,26 @@
         </div>
     </div>
 
+    <div class="card earnings-card flex_column statistic_o">
+        <div>Последнии события</div>
+        <ng-container *ngFor="let interes of interesList">
+            <div>
+                <span>{{interes.date}}</span>
+                <span> пользователь: <a [routerLink]="['/profile/' + interes.user.id]">{{interes.user.name}}</a> </span>
+                <span> оценил событие <a [routerLink]="['/event/' + interes.eventId]">{{interes.eventName}}</a></span>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="card earnings-card flex_column statistic_o">
+        <div>Инересные события</div>
+        <ng-container *ngFor="let interes of getEventsGroup()">
+            <div>
+                <span>Cобытие <a [routerLink]="['/event/' + interes.eventId]">{{interes.eventName}}</a></span>
+                <span> понравилось {{ interes.countUser }} человек</span>
+            </div>
+        </ng-container>
+    </div>
+
 
 </div>

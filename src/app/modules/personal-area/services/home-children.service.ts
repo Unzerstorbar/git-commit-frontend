@@ -67,4 +67,9 @@ export class HomeChildrenService extends CrudService<HomeChildrenModel>{
             map(() => ({success: true}))
         );
   }
+
+  getInteresList(){
+      const likes = JSON.parse(localStorage.getItem('likes')) || [];
+      return likes;
+  }
 }

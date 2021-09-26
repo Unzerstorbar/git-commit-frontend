@@ -41,6 +41,9 @@
         </div>
         <button class="avatar bg-light-secondary"><i data-feather='mail'></i>Чат</button>
         <div style="display: flex; grid-gap: 8px">
+            <button class="btn-outline-primary button-action" (click)="wantParticipate(eventItem)">
+                Хочу участвовать
+            </button>
             <button class="btn-outline-danger button-action">Отменить участие</button>
             <button class="btn-outline-secondary button-action" [routerLink]="'events/' + eventItem.id">Перейти</button>
         </div>
