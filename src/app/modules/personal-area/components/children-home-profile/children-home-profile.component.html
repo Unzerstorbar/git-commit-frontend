@@ -1,22 +1,25 @@
 <!--<div>-->
-<div>
-    <ul ngbNav #nav="ngbNav" class="nav-tabs card earnings-card">
-        <li ngbNavItem>
-            <a ngbNavLink>Карточка</a>
-            <ng-template ngbNavContent>
-                <app-children-home-card></app-children-home-card>
-            </ng-template>
-        </li>
-        <li ngbNavItem>
-            <a ngbNavLink>Воспитаники</a>
-            <ng-template ngbNavContent>
-                <app-children-home-students-list></app-children-home-students-list>
-            </ng-template>
-        </li>
-    </ul>
-    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <div>
+            <ul ngbNav #nav="ngbNav" class="nav-tabs card earnings-card">
+                <li ngbNavItem>
+                    <a ngbNavLink>Карточка</a>
+                    <ng-template ngbNavContent>
+                        <app-children-home-card></app-children-home-card>
+                    </ng-template>
+                </li>
+                <li ngbNavItem>
+                    <a ngbNavLink>Воспитаники</a>
+                    <ng-template ngbNavContent>
+                        <app-children-home-students-list></app-children-home-students-list>
+                    </ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+    </div>
 </div>
-
 
 <!--    <div class="content_wrapper" style="width: 100%">-->
 <!--    </div>-->

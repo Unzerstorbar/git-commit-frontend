@@ -1,1 +1,94 @@
-<p>orphanage-list works!</p>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <div class="flex_column profile" *ngIf="!!homeChildren">
+            <div class="flex_column">
+                <div class="profile__title">{{homeChildren.name}}</div>
+            </div>
+
+            <div *ngFor="let home of homeChildren" class="flex_row profile__info_block card earnings-card">
+                <div class="flex_column profile__img_block">
+                    <img src="assets/images/slider/01.jpg" class="maim_img"/>
+                    <div class="sub_img_row">
+                        <img src="assets/images/slider/02.jpg" />
+                        <img src="assets/images/slider/03.jpg" />
+                        <img src="assets/images/slider/04.jpg" />
+                        <img src="assets/images/slider/05.jpg" />
+                        <img src="assets/images/slider/06.jpg" />
+                    </div>
+                </div>
+                <div class="flex_column profile__content">
+                    <div class="profile__content__base_info flex_row">
+                        <div>
+                            <div class="flex_row">
+                                <div class="flex_column block_info mrgn_40">
+                                    <h4 class="invoice-title">Адрес</h4>
+                                    <div class="data-event font-weight-bolder">{{home.city?.name}}, {{home.address}}</div>
+                                </div>
+                            </div>
+
+                            <div class="flex_column block_info mrgn_40"
+                                 *ngIf="!!home.requisites?.length">
+                                <div class="block_info__title">Реквизиты для пожертований</div>
+                                <div class="block_info__content">
+                                    <div *ngFor="let requisite of home.requisites">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex_column block_info">
+                                <h4 class="invoice-title">Контакты</h4>
+                                <ng-container *ngFor="let contact of home.contacts">
+                                    <app-contact-person
+                                            [name]="contact.name"
+                                            [contact]="contact.contact"
+                                            [role]="contact.role"
+                                            [type]="contact.type">
+
+                                    </app-contact-person>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="donate_btn">Пожертовать</button>
+                            <br>
+                            <button style="margin-top: 20px" (click)="goToPupils(home.id)" class="donate_btn bg-success">Перейти к дому</button>
+                        </div>
+                    </div>
+
+                    <!--            <div class="profile__requisites flex_row">-->
+                    <!--                <div class="block_info">-->
+                    <!--                    <div class="requisites_block_title">Реквизиты</div>-->
+                    <!--                    <div>-->
+                    <!--                        УФК по Калужской области (ИАТЭ НИЯУ МИФИ л/сч 30376У90590)-->
+
+                    <!--                        р/сч 03214643000000013700-->
+
+                    <!--                        Банк: Отделение Калуга Банка России//УФК по Калужской области г. Калуга-->
+
+                    <!--                        БИК 012908002-->
+
+                    <!--                        КОРР.СЧЕТ 40102810045370000030-->
+
+                    <!--                        КБК 00000000000000000130-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                    <!--                <div class="block_info">-->
+                    <!--                    <div class="requisites_block_title">Материально техническое оснащение</div>-->
+                    <!--                    <div>-->
+                    <!--                        <div>Компьютерный клас</div>-->
+                    <!--                        <div>Компьютерный клас</div>-->
+                    <!--                        <div>Компьютерный клас</div>-->
+                    <!--                        <div>Компьютерный клас</div>-->
+                    <!--                        <div>Компьютерный клас</div>-->
+                    <!--                        <div>Компьютерный клас</div>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                    <!--            </div>-->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

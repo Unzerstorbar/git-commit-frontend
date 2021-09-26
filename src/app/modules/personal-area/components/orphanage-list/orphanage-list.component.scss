@@ -1,0 +1,98 @@
+@import "src/assets/scss/mixins/import";
+@import '@core/scss/base/pages/app-ecommerce.scss';
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.maim_img {
+  max-width: 350px;
+}
+
+.mrgn_40 {
+  margin-bottom: 40px;
+}
+
+
+.sub_img_row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+
+  > img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.profile {
+  border-radius: 6px;
+  margin: 20px 0;
+
+  &__title {
+    @include setFont(20px, 31px, 600, normal, rgb(var(--color-text-base-rgb)));
+    max-width: 60%;
+  }
+
+  &__img_block {
+    max-width: 350px;
+  }
+
+  &__info_block{
+    margin-top: 20px;
+    border-radius: 6px;
+  }
+
+  &__content {
+    padding: 20px;
+    width: 100%;
+
+    &__base_info{
+      justify-content: space-between;
+    }
+  }
+}
+
+.block_info {
+  &__title {
+    @include setFont(12px, 15px, 600, normal, rgb(var(--color-text-base-rgb)));
+    margin-bottom: 12px;
+  }
+
+  &__content {
+    @include setFont(12px, 15px, 400, normal, rgb(var(--color-text-sub-rgb)));
+  }
+}
+
+.profile__requisites {
+  justify-content: space-between;
+
+  > div {
+    width: 40%;
+  }
+}
+
+.requisites_block_title {
+  @include setFont(16px, 19px, 600, normal, rgb(var(--color-text-base-rgb)));
+  margin-bottom: 22px;
+}
+
+.donate_btn {
+  border: none;
+  background: rgb(var(--color-btn-blue-rgb));
+  width: 130px;
+  height: 34px;
+  border-right: 5px;
+  @include setFont(12px, 15px, 500, normal, rgb(var(--color-text-white-rgb)));
+}
+
+.contact_block {
+  justify-content: space-between;
+}
+

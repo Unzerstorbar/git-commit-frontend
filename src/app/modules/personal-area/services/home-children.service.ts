@@ -41,6 +41,16 @@ export class HomeChildrenService extends CrudService<HomeChildrenModel>{
         );
   }
 
+  getTryRegistry(id: number): Observable<HomeChildrenModel[]> {
+    const headers = this.auth.getAuthorizationHeaders();
+    return this.http.get(`${this.baseUrl}/registry`, {headers})
+        .pipe(
+            map((dataList: any[]) => {
+              return dataList;
+            })
+        );
+  }
+
   saveChildrenInHomeChildren(data: RegistryRowModel, childHomeId: number) {
     const headers = this.auth.getAuthorizationHeaders();
     return this.http.post(`${this.baseUrl}/${childHomeId}/pupil`, data, {headers})

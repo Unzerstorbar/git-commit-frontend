@@ -22,7 +22,7 @@ export const menu: CoreMenu[] = [
         translate: 'Главная страница',
         type: 'item',
         icon: 'circle',
-        url: '/'
+        url: '/orphanage/pupils'
       },
     ]
   },
@@ -61,7 +61,7 @@ export const menu: CoreMenu[] = [
             title: 'MENU.APPS.ORPHANAGE.LIST',
             translate: 'Реестр детских домов',
             type: 'item',
-            url: 'orphanage/list',
+            url: 'orphanage/registry',
           },
         ]
       },

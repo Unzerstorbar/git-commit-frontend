@@ -13,7 +13,11 @@ import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: 'registry',
+    component: OrphanageListComponent
+  },
+  {
+    path: 'pupil/:id',
     component: ChildrenHomeProfileComponent,
   },
   {
@@ -21,8 +25,8 @@ const routes: Routes = [
     component: OrphanageEditorComponent
   },
   {
-    path: 'list',
-    component: OrphanageListComponent
+    path: ':id',
+    component: ChildrenHomeStudentsListComponent
   },
 ];
 

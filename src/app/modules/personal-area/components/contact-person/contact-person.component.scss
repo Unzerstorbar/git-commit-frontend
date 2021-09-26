@@ -1,18 +1,28 @@
 @import "src/assets/scss/mixins/import";
+@import '@core/scss/base/pages/app-ecommerce.scss';
 
 .contact {
   &__name {
-    @include setFont(12px, 15px, 600, normal, rgb(var(--color-text-base-rgb)));
+    //@include setFont(20px, 15px, 600, normal);
+    font-size: 20px;
     margin-bottom: 12px;
   }
 
   &__data {
     display: flex;
     flex-direction: column;
-    @include setFont(12px, 15px, 400, normal, rgb(var(--color-text-sub-rgb)));
+    font-size: 18px;
+    //@include setFont(16px, 15px, 400, normal);
 
     > div > span {
       text-decoration: underline;
     }
   }
+}
+.data-event {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }
